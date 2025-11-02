@@ -1,13 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://b1du0y3mluexu"]
 
-[ext_resource type="Texture2D" uid="uid://b88diaqqpinls" path="res://icon.svg" id="1_jw4ub"]
 [ext_resource type="Script" uid="uid://dwe1ostyt2hfj" path="res://scenes/boat/boat_rigid_body_2d.gd" id="1_ta61o"]
+[ext_resource type="Texture2D" uid="uid://bffe06k26dr3x" path="res://assets/placeholders/redboat.png" id="2_obw36"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jw4ub"]
 bounce = 0.5
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ta61o"]
-radius = 32.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bejdg"]
+radius = 9.0
+height = 24.0
 
 [node name="BoatRigidBody2D" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_jw4ub")
@@ -17,10 +18,11 @@ angular_damp_mode = 1
 angular_damp = 1.0
 script = ExtResource("1_ta61o")
 
-[node name="Icon" type="Sprite2D" parent="."]
-rotation = 1.5707964
+[node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_jw4ub")
+texture = ExtResource("2_obw36")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_ta61o")
+position = Vector2(-3, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_bejdg")
