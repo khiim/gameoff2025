@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://vdic72an5ggu"]
+
+[ext_resource type="Texture2D" uid="uid://b88diaqqpinls" path="res://icon.svg" id="1_haimw"]
+[ext_resource type="Script" uid="uid://dngn6lquvfu43" path="res://scenes/boat/boat_character_body_2d.gd" id="1_oyh0g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_haimw"]
+radius = 33.24154
+
+[node name="BoatCharacterBody2d" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_oyh0g")
+turn_speed = 6.0
+
+[node name="Icon" type="Sprite2D" parent="."]
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_haimw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_haimw")
