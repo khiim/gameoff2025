@@ -1,0 +1,17 @@
+name: Looks Good
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  static-checks:
+    name: 'Static checks'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Scony/godot-gdscript-toolkit@4.5.0
+      - run: gdformat --check .
+      - run: gdlint .
