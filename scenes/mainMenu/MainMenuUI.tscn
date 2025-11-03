@@ -1,0 +1,158 @@
+[gd_scene load_steps=17 format=3 uid="uid://cbvlaxik53twf"]
+
+[ext_resource type="Texture2D" uid="uid://dkyywud86cv7k" path="res://assets/placeholders/MainMenu/MainMenuBackground.png" id="1_it0vh"]
+[ext_resource type="Texture2D" uid="uid://buu7vhm4vg7k6" path="res://assets/placeholders/MainMenu/MainMenuWave1.png" id="2_8hje6"]
+[ext_resource type="Texture2D" uid="uid://dds608lgc5pl5" path="res://assets/placeholders/MainMenu/MainMenuWave2.png" id="3_7pc2c"]
+[ext_resource type="Texture2D" uid="uid://5rgl1ln0r31g" path="res://assets/placeholders/MainMenu/MainMenuWave3.png" id="4_b4m1v"]
+[ext_resource type="Texture2D" uid="uid://8hjwanu37trb" path="res://assets/placeholders/MainMenu/MainMenuWaves.png" id="5_ru5gs"]
+[ext_resource type="Texture2D" uid="uid://dnry8pu66e2ee" path="res://assets/placeholders/MainMenu/MainMenuSplash2.png" id="6_l4ckh"]
+[ext_resource type="Texture2D" uid="uid://cjncoa7gfdmax" path="res://assets/placeholders/MainMenu/MainMenuSelected.png" id="6_mqd2d"]
+[ext_resource type="Texture2D" uid="uid://dl5rppfnybf55" path="res://assets/placeholders/MainMenu/MainMenuSplash.png" id="7_mqd2d"]
+[ext_resource type="Texture2D" uid="uid://ckamslnkxsow0" path="res://assets/placeholders/MainMenu/MainMenuBoat.png" id="8_eeujh"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eeujh"]
+texture = ExtResource("1_it0vh")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ru5gs"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": ExtResource("2_8hje6")
+}, {
+"duration": 5.0,
+"texture": ExtResource("3_7pc2c")
+}, {
+"duration": 5.0,
+"texture": ExtResource("4_b4m1v")
+}],
+"loop": true,
+"name": &"waves",
+"speed": 8.0
+}]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_emnh7"]
+texture = ExtResource("5_ru5gs")
+
+[sub_resource type="Theme" id="Theme_l4ckh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4ckh"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+expand_margin_left = 5.0
+expand_margin_top = 2.0
+expand_margin_right = 5.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o18mb"]
+texture = ExtResource("6_mqd2d")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_emnh7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_l4ckh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mqd2d")
+}],
+"loop": true,
+"name": &"splash",
+"speed": 2.5
+}]
+
+[node name="MainMenuUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_eeujh")
+
+[node name="Water" type="AnimatedSprite2D" parent="Panel"]
+position = Vector2(462.43536, 260.32867)
+scale = Vector2(0.42833903, 0.34472117)
+sprite_frames = SubResource("SpriteFrames_ru5gs")
+animation = &"waves"
+autoplay = "waves"
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+offset_right = 180.0
+offset_bottom = 353.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_emnh7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -276.0
+offset_top = -340.0
+offset_bottom = -142.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="Start" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_l4ckh")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_l4ckh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l4ckh")
+theme_override_styles/hover = SubResource("StyleBoxTexture_o18mb")
+text = "Start"
+
+[node name="Settings" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_l4ckh")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_l4ckh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l4ckh")
+theme_override_styles/hover = SubResource("StyleBoxTexture_o18mb")
+text = "Settings"
+
+[node name="Credits" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_l4ckh")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_l4ckh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l4ckh")
+theme_override_styles/hover = SubResource("StyleBoxTexture_o18mb")
+text = "Credits"
+
+[node name="Exit" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_l4ckh")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_l4ckh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l4ckh")
+theme_override_styles/hover = SubResource("StyleBoxTexture_o18mb")
+text = "Exit"
+
+[node name="SplashAnimation" type="AnimatedSprite2D" parent="."]
+position = Vector2(618.00006, 252)
+rotation = 6.3006387
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_emnh7")
+animation = &"splash"
+autoplay = "splash"
+
+[node name="Boat" type="Sprite2D" parent="."]
+position = Vector2(360, 389)
+rotation = -2.347468
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_eeujh")
