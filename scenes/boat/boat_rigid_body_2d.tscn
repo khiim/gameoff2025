@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b1du0y3mluexu"]
 
-[ext_resource type="Script" uid="uid://dwe1ostyt2hfj" path="res://scenes/boat/boat_rigid_body_2d.gd" id="1_ta61o"]
+[ext_resource type="Script" path="res://scenes/boat/boat_rigid_body_2d.gd" id="1_ta61o"]
 [ext_resource type="Texture2D" uid="uid://bffe06k26dr3x" path="res://assets/placeholders/redboat.png" id="2_obw36"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jw4ub"]
@@ -24,5 +24,5 @@ texture = ExtResource("2_obw36")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, 0)
-rotation = 1.5707964
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_bejdg")
