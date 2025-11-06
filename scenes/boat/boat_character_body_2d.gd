@@ -1,3 +1,4 @@
+class_name Boat
 extends CharacterBody2D
 
 @export var acceleration: float = 400.0
@@ -15,6 +16,10 @@ func add_impulse(force: Vector2) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if !_impulse_force.is_zero_approx():
+		velocity += _impulse_force
+		_impulse_force = Vector2.ZERO
+
 	var steer_input := Input.get_axis("turn_left", "turn_right")
 
 	# Throttle
