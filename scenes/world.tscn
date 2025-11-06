@@ -27,14 +27,14 @@ rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_rwgxs")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Bounds"]
-position = Vector2(1152, 0)
+position = Vector2(960, 0)
 rotation = -1.5707964
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/StaticBody2D3"]
 shape = SubResource("WorldBoundaryShape2D_4wyf3")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="Bounds"]
-position = Vector2(0, 648)
+position = Vector2(0, 544)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/StaticBody2D4"]
 shape = SubResource("WorldBoundaryShape2D_k0juu")
