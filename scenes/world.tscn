@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://di1ho05qhyphj"]
+[gd_scene load_steps=7 format=3 uid="uid://di1ho05qhyphj"]
 
+[ext_resource type="Script" uid="uid://2t4w0l3wwuxy" path="res://scenes/world.gd" id="1_rwgxs"]
 [ext_resource type="PackedScene" uid="uid://vdic72an5ggu" path="res://scenes/boat/boat_character_body_2d.tscn" id="2_rwgxs"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nnsk1"]
@@ -11,6 +12,7 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_k0juu"]
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_rwgxs")
 
 [node name="Bounds" type="Node2D" parent="."]
 
