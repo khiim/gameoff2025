@@ -1,0 +1,66 @@
+class_name BoatAI
+extends CharacterBody2D
+
+@onready var agent: NavigationAgent2D = $NavigationAgent2D
+@export var targets: Array[Node2D]
+
+@export var acceleration: float = 200.0
+@export var absolute_max_speed: float = 600.0
+@export var engine_max_speed: float = 600.0
+@export var turn_speed: float = 4.0
+@export var linear_damping: float = 0.98
+@export var lateral_drag: float = 0.2
+@export var avoid_radius := 80.0
+
+var _impulse_force: Vector2 = Vector2.ZERO
+var _target_index := 0
+
+func add_impulse(force: Vector2) -> void:
+	_impulse_force += force
+
+func steer_toward(target_point: Vector2, delta: float) -> void:
+	var to_target = (target_point - global_position)
+	var desired_angle = to_target.angle()
+	var angle_diff = wrapf(desired_angle - rotation, -PI, PI)
+
+	var steer_input = clamp(angle_diff, -1.0, 1.0)
+	var throttle = 1.0 if abs(angle_diff) < 0.4 else 0.5
+
+	apply_controls(steer_input, throttle, delta)
+
+func apply_controls(steer_input: float, throttle: float, delta: float) -> void:
+	var forward = Vector2.RIGHT.rotated(rotation)
+	var forward_speed = velocity.dot(forward)
+
+	velocity += forward * throttle * acceleration * delta
+
+	var speed_factor = clamp(abs(forward_speed) / engine_max_speed, 0.2, 1.0)
+	if forward_speed < 0:
+		speed_factor = -speed_factor
+
+	rotation += steer_input * turn_speed * speed_factor * delta
+
+func _ready() -> void:
+	await get_tree().physics_frame
+	if targets.size() > 0:
+		agent.target_position = targets[_target_index].global_position
+
+
+func _physics_process(delta: float) -> void:
+
+	if !_impulse_force.is_zero_approx():
+		velocity += _impulse_force
+		_impulse_force = Vector2.ZERO
+
+	if agent.is_navigation_finished():
+		_target_index = (_target_index + 1) % targets.size()
+		agent.target_position = targets[_target_index].global_position
+
+	var next_path_pos = agent.get_next_path_position()
+	steer_toward(next_path_pos, delta)
+
+	velocity *= linear_damping
+	if velocity.length() > absolute_max_speed:
+		velocity = velocity.normalized() * absolute_max_speed
+
+	move_and_slide()
