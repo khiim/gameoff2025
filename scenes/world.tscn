@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://di1ho05qhyphj"]
+[gd_scene load_steps=6 format=3 uid="uid://di1ho05qhyphj"]
 
 [ext_resource type="PackedScene" uid="uid://ow3f32q2gor7" path="res://assets/tilesets/gameof_25_boat_map_1.tscn" id="2_1pp0p"]
 [ext_resource type="PackedScene" uid="uid://vdic72an5ggu" path="res://scenes/boat/boat_character_body_2d.tscn" id="2_rwgxs"]
-[ext_resource type="Script" path="res://scenes/camera_2d.gd" id="3_njdnp"]
+[ext_resource type="Script" uid="uid://dm84xs54y5fym" path="res://scenes/camera_2d.gd" id="3_njdnp"]
+[ext_resource type="PackedScene" uid="uid://c3gx3doaqh7f1" path="res://scenes/ai_target.tscn" id="4_71j4m"]
+[ext_resource type="PackedScene" uid="uid://coi61fndwsc6r" path="res://scenes/boat/boat_ai_body_2d.tscn" id="5_qfnet"]
 
 [node name="World" type="Node2D"]
 
@@ -16,3 +18,24 @@ position = Vector2(848, 910)
 position = Vector2(852, 908)
 script = ExtResource("3_njdnp")
 target_nodes = Array[NodePath]([NodePath("../BoatCharacterBody2d")])
+
+[node name="AiTarget" parent="." instance=ExtResource("4_71j4m")]
+position = Vector2(1126, 495)
+
+[node name="AiTarget2" parent="." instance=ExtResource("4_71j4m")]
+position = Vector2(2715, 1154)
+
+[node name="AiTarget3" parent="." instance=ExtResource("4_71j4m")]
+position = Vector2(926, 2338)
+
+[node name="BoatCharacterBody2d2" parent="." node_paths=PackedStringArray("targets") instance=ExtResource("5_qfnet")]
+position = Vector2(633, 768)
+targets = [NodePath("../AiTarget"), NodePath("../AiTarget2"), NodePath("../AiTarget3")]
+
+[node name="BoatCharacterBody2d3" parent="." node_paths=PackedStringArray("targets") instance=ExtResource("5_qfnet")]
+position = Vector2(782, 998)
+targets = [NodePath("../AiTarget"), NodePath("../AiTarget2"), NodePath("../AiTarget3")]
+
+[node name="BoatCharacterBody2d4" parent="." node_paths=PackedStringArray("targets") instance=ExtResource("5_qfnet")]
+position = Vector2(630, 917)
+targets = [NodePath("../AiTarget"), NodePath("../AiTarget2"), NodePath("../AiTarget3")]
