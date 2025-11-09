@@ -4,22 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://b4vr3wkjsborj" path="res://assets/boat/raceboat.png" id="2_obw36"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jw4ub"]
-bounce = 0.5
+friction = 0.35
+bounce = 0.7
 
 [node name="BoatRigidBody2D" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_jw4ub")
 linear_damp_mode = 1
 angular_damp_mode = 1
 script = ExtResource("1_ta61o")
-engine_force = null
-engine_max_speed = null
-absolute_max_speed = null
-base_lateral_drag = null
-min_lateral_drag = null
-turn_torque = null
-engine_offset = null
-linear_damping_factor = null
-angular_damping_factor = null
 
 [node name="Sprite" type="Sprite2D" parent="."]
 rotation = 1.5707964
@@ -28,4 +20,4 @@ texture = ExtResource("2_obw36")
 hframes = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(19, 0, 3, 7, -3, 7, -19, 4, -19, -3, -3, -6, 4, -6)
+polygon = PackedVector2Array(17, 2, 3, 7, -3, 7, -19, 4, -19, -3, -3, -6, 4, -6, 17, -1)

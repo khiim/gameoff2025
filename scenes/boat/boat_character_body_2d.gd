@@ -1,4 +1,4 @@
-class_name Boat
+#class_name Boat
 extends CharacterBody2D
 
 @export var acceleration: float = 400.0

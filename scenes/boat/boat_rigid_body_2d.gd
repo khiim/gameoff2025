@@ -1,8 +1,9 @@
+class_name Boat
 extends RigidBody2D
 
-@export var engine_force: float = 450.0
-@export var engine_max_speed: float = 600.0
-@export var absolute_max_speed: float = 1000.0
+@export var engine_force: float = 500.0
+@export var engine_max_speed: float = 1600.0
+@export var absolute_max_speed: float = 3200.0
 @export var base_lateral_drag: float = 5.0
 @export var min_lateral_drag: float = 0.8
 @export var turn_torque: float = 1300.0
@@ -11,16 +12,24 @@ extends RigidBody2D
 @export var linear_damping_factor: float = 0.985
 @export var angular_damping_factor: float = 0.92
 
+var _steer_input: float = 0.0
+var _throttle: float = 0.0
+
+
+func set_input(steer_input: float, throttle: float) -> void:
+	_steer_input = steer_input
+	_throttle = throttle
+
 
 func _physics_process(_delta: float) -> void:
 	# Input
-	var steer_input: float = Input.get_axis("turn_left", "turn_right")
+	#var steer_input: float = Input.get_axis("turn_left", "turn_right")
 
-	var throttle: float = 0.0
-	if Input.is_action_pressed("accelerate"):
-		throttle = 1.0
-	elif Input.is_action_pressed("reverse"):
-		throttle = -0.5
+	#var throttle: float = 0.0
+	#if Input.is_action_pressed("accelerate"):
+	#	throttle = 1.0
+	#elif Input.is_action_pressed("reverse"):
+	#	throttle = -0.5
 
 	# Get forward and right
 	var forward: Vector2 = Vector2.RIGHT.rotated(rotation)
@@ -32,10 +41,10 @@ func _physics_process(_delta: float) -> void:
 
 	# Engine thrust
 	if (
-		(throttle > 0 and forward_speed < engine_max_speed)
-		or (throttle < 0 and forward_speed > -engine_max_speed)
+		(_throttle > 0 and forward_speed < engine_max_speed)
+		or (_throttle < 0 and forward_speed > -engine_max_speed)
 	):
-		var force := forward * throttle * engine_force
+		var force := forward * _throttle * engine_force
 		var local_engine_pos := engine_offset.rotated(rotation)
 		apply_force(force, local_engine_pos)
 
@@ -46,7 +55,7 @@ func _physics_process(_delta: float) -> void:
 	apply_central_force(lateral_force)
 
 	# Steering
-	apply_torque(steer_input * turn_torque)
+	apply_torque(_steer_input * turn_torque)
 
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
