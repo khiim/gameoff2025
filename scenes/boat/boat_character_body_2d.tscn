@@ -1,22 +1,25 @@
 [gd_scene load_steps=4 format=3 uid="uid://vdic72an5ggu"]
 
 [ext_resource type="Script" uid="uid://dngn6lquvfu43" path="res://scenes/boat/boat_character_body_2d.gd" id="1_oyh0g"]
-[ext_resource type="Texture2D" uid="uid://bffe06k26dr3x" path="res://assets/placeholders/redboat.png" id="2_oyh0g"]
+[ext_resource type="Texture2D" uid="uid://b4vr3wkjsborj" path="res://assets/boat/raceboat.png" id="2_oyh0g"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oyh0g"]
-radius = 9.0
-height = 24.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sps48"]
+radius = 13.0
+height = 76.0
 
 [node name="BoatCharacterBody2d" type="CharacterBody2D"]
+position = Vector2(-15, 0)
 motion_mode = 1
 script = ExtResource("1_oyh0g")
 turn_speed = 6.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+position = Vector2(32, 0)
+rotation = 1.5707964
 texture = ExtResource("2_oyh0g")
+hframes = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, 0)
+position = Vector2(30, 0)
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_oyh0g")
+shape = SubResource("CapsuleShape2D_sps48")

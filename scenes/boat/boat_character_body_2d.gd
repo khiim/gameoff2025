@@ -65,6 +65,3 @@ func _physics_process(delta: float) -> void:
 
 	if move_and_slide():
 		velocity = get_real_velocity()
-		#pass
-
-	#print(velocity)

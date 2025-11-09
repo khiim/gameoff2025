@@ -1,35 +1,57 @@
 extends RigidBody2D
 
-@export var engine_force: float = 400.0
-@export var max_speed: float = 600.0
-@export var turn_torque: float = 800.0
-@export var lateral_drag: float = 5.0
+@export var engine_force: float = 450.0
+@export var engine_max_speed: float = 600.0
+@export var absolute_max_speed: float = 1000.0
+@export var base_lateral_drag: float = 5.0
+@export var min_lateral_drag: float = 0.8
+@export var turn_torque: float = 1300.0
+@export var engine_offset: Vector2 = Vector2(-16, 0)
+
+@export var linear_damping_factor: float = 0.985
+@export var angular_damping_factor: float = 0.92
 
 
 func _physics_process(_delta: float) -> void:
 	# Input
-	var steer_input := Input.get_axis("turn_left", "turn_right")
+	var steer_input: float = Input.get_axis("turn_left", "turn_right")
 
-	var throttle := 0.0
+	var throttle: float = 0.0
 	if Input.is_action_pressed("accelerate"):
 		throttle = 1.0
 	elif Input.is_action_pressed("reverse"):
 		throttle = -0.5
 
 	# Get forward and right
-	var forward := Vector2.RIGHT.rotated(rotation)
-	var right := forward.rotated(-PI / 2)
+	var forward: Vector2 = Vector2.RIGHT.rotated(rotation)
+	var right: Vector2 = forward.rotated(-PI / 2)
 
-	# Limit forward speed
-	var forward_speed := forward.dot(linear_velocity)
-	if abs(forward_speed) < max_speed:
-		apply_central_force(forward * throttle * engine_force)
+	# Get forward and lateral speed
+	var forward_speed: float = forward.dot(linear_velocity)
+	var lateral_speed: float = right.dot(linear_velocity)
 
-	# Lateral drag
-	var lateral_speed := right.dot(linear_velocity)
-	var lateral_force: Vector2 = -right * lateral_speed * lateral_drag
+	# Engine thrust
+	if (
+		(throttle > 0 and forward_speed < engine_max_speed)
+		or (throttle < 0 and forward_speed > -engine_max_speed)
+	):
+		var force := forward * throttle * engine_force
+		var local_engine_pos := engine_offset.rotated(rotation)
+		apply_force(force, local_engine_pos)
+
+	# Lateral drag that adapts to speed
+	var speed_ratio: float = clamp(abs(forward_speed) / engine_max_speed, 0.0, 1.0)
+	var current_drag: float = lerp(base_lateral_drag, min_lateral_drag, speed_ratio)
+	var lateral_force: Vector2 = -right * lateral_speed * current_drag
 	apply_central_force(lateral_force)
 
 	# Steering
-	var steer_strength: float = clamp(forward_speed / max_speed, -1.0, 1.0)
-	apply_torque(steer_input * turn_torque * steer_strength)
+	apply_torque(steer_input * turn_torque)
+
+
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	state.linear_velocity *= linear_damping_factor
+	state.angular_velocity *= angular_damping_factor
+
+	if state.linear_velocity.length() > absolute_max_speed:
+		state.linear_velocity = state.linear_velocity.normalized() * absolute_max_speed
