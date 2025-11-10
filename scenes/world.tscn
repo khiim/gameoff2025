@@ -14,6 +14,12 @@
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(848, 904)
+position_smoothing_enabled = true
+position_smoothing_speed = 20.0
+drag_left_margin = 0.1
+drag_top_margin = 0.1
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1
 script = ExtResource("3_njdnp")
 target_nodes = Array[NodePath]([NodePath("../Player")])
 
@@ -40,9 +46,6 @@ targets = [NodePath("../AiTarget"), NodePath("../AiTarget2"), NodePath("../AiTar
 
 [node name="Player" parent="." instance=ExtResource("6_qfnet")]
 position = Vector2(520, 824)
-engine_force = 500.0
-engine_max_speed = 1600.0
-absolute_max_speed = 3500.0
 
 [node name="PlayerSteering" type="Node" parent="Player" node_paths=PackedStringArray("boat")]
 script = ExtResource("6_i7141")
