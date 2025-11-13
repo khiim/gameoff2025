@@ -18,10 +18,10 @@ func _physics_process(_delta: float) -> void:
 		throttle = 1.0
 	elif Input.is_action_pressed("reverse"):
 		throttle = -0.5
-	
+
 	if Input.is_action_pressed("wave") and boat and wave_cooldown <= 0:
 		wave_cooldown = wave_cooldown_time
 		boat.spawn_wave()
-	
+
 	if boat:
 		boat.set_input(steer_input, throttle)
