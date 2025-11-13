@@ -22,22 +22,6 @@ enum DirectionMode { FIXED, MOUSE, FORWARD, VELOCITY }  # Always spawn in a fixe
 # Optional: Reference to a RigidBody2D/CharacterBody2D for VELOCITY mode
 @export var movement_body: Node2D
 
-
-func _ready() -> void:
-	# Set up input action if it doesn't exist
-	if not InputMap.has_action(input_action):
-		InputMap.add_action(input_action)
-		var event = InputEventKey.new()
-		event.keycode = KEY_SPACE
-		InputMap.action_add_event(input_action, event)
-		print("Created input action: ", input_action, " mapped to SPACEBAR")
-
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed(input_action):
-		spawn_wave()
-
-
 func spawn_wave() -> void:
 	var direction = _get_spawn_direction()
 	var spawn_pos = global_position + direction * spawn_offset

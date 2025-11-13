@@ -49,7 +49,6 @@ func _physics_process(delta: float) -> void:
 
 	if sprite and sprite.material is ShaderMaterial:
 		var fade_progress = _current_radius / _max_radius
-		print("Fade progress :", fade_progress)
 		sprite.material.set_shader_parameter("progress", fade_progress)
 		sprite.scale = _current_scale
 

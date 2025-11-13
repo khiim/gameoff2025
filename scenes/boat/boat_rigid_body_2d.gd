@@ -15,15 +15,9 @@ extends RigidBody2D
 var _steer_input: float = 0.0
 var _throttle: float = 0.0
 
-
-func _ready():
-	$WaveSpawner.wave_spawned.connect(_on_wave_spawned)
-
-
-func _on_wave_spawned(wave: Wave):
-	print("Wave created!")
-	# Add screen shake, sound effects, etc.
-
+func spawn_wave() -> void:
+	if $WaveSpawner and $WaveSpawner.has_method("spawn_wave"):
+		$WaveSpawner.spawn_wave()
 
 func set_input(steer_input: float, throttle: float) -> void:
 	_steer_input = steer_input
