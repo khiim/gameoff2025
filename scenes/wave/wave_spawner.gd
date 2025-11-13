@@ -1,25 +1,20 @@
 extends Node2D
 
-## Wave Spawner
-## Add this script to a Node2D in your scene (could be the player boat or a dedicated spawner)
-## Press SPACEBAR to spawn waves
-
 signal wave_spawned(wave: Wave)
+
+enum DirectionMode { FIXED, FORWARD, MOUSE, VELOCITY }
 
 @export_group("Wave Settings")
 @export var wave_force: float = 500.0
 @export var wave_speed: float = 200.0
-@export var spawn_offset: float = 30.0  # Distance from spawner to create wave
+@export var spawn_offset: float = 30.0
 
 @export_group("Input")
-@export var input_action: String = "spawn_wave"  # Change to your input action name
+@export var input_action: String = "spawn_wave"
 
 @export_group("Direction Mode")
-enum DirectionMode { FIXED, MOUSE, FORWARD, VELOCITY }  # Always spawn in a fixed direction  # Spawn towards mouse position  # Spawn in the direction this node is facing  # Spawn in the direction of movement (for moving objects)
 @export var direction_mode: DirectionMode = DirectionMode.FORWARD
-@export var fixed_direction: Vector2 = Vector2.RIGHT  # Used when FIXED mode
-
-# Optional: Reference to a RigidBody2D/CharacterBody2D for VELOCITY mode
+@export var fixed_direction: Vector2 = Vector2.RIGHT
 @export var movement_body: Node2D
 
 
@@ -32,36 +27,33 @@ func spawn_wave() -> void:
 
 	wave_spawned.emit(wave)
 
-	print("Wave spawned at ", spawn_pos, " in direction ", direction)
-
 
 func _get_spawn_direction() -> Vector2:
+	var dir: Vector2
 	match direction_mode:
 		DirectionMode.FIXED:
-			return fixed_direction.normalized()
+			dir = fixed_direction.normalized()
 
 		DirectionMode.MOUSE:
 			var mouse_pos = get_global_mouse_position()
-			return (mouse_pos - global_position).normalized()
+			dir = (mouse_pos - global_position).normalized()
 
 		DirectionMode.FORWARD:
 			# Use the node's rotation to determine forward direction
-			return Vector2.RIGHT.rotated(global_rotation)
+			dir =  Vector2.RIGHT.rotated(global_rotation)
 
 		DirectionMode.VELOCITY:
+			# Fallback to forward direction if no velocity
+			dir =  Vector2.RIGHT.rotated(global_rotation)
 			if movement_body and movement_body is RigidBody2D:
 				var vel = movement_body.linear_velocity
 				if vel.length() > 0.1:
-					return vel.normalized()
+					dir =  vel.normalized()
 			elif movement_body and movement_body is CharacterBody2D:
 				var vel = movement_body.velocity
 				if vel.length() > 0.1:
-					return vel.normalized()
-			# Fallback to forward direction if no velocity
-			return Vector2.RIGHT.rotated(global_rotation)
-
-	return Vector2.RIGHT
-
+					dir =  vel.normalized()
+	return dir
 
 ## Call this from code to spawn a wave in a specific direction
 func spawn_wave_custom(
