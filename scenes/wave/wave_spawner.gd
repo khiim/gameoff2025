@@ -22,6 +22,7 @@ enum DirectionMode { FIXED, MOUSE, FORWARD, VELOCITY }  # Always spawn in a fixe
 # Optional: Reference to a RigidBody2D/CharacterBody2D for VELOCITY mode
 @export var movement_body: Node2D
 
+
 func spawn_wave() -> void:
 	var direction = _get_spawn_direction()
 	var spawn_pos = global_position + direction * spawn_offset
