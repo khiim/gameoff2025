@@ -9,19 +9,11 @@ friction = 0.35
 bounce = 0.7
 
 [node name="BoatRigidBody2D" type="RigidBody2D"]
+collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_jw4ub")
 linear_damp_mode = 1
 angular_damp_mode = 1
 script = ExtResource("1_ta61o")
-engine_force = null
-engine_max_speed = null
-absolute_max_speed = null
-base_lateral_drag = null
-min_lateral_drag = null
-turn_torque = null
-engine_offset = null
-linear_damping_factor = null
-angular_damping_factor = null
 
 [node name="Sprite" type="Sprite2D" parent="."]
 rotation = 1.5707964

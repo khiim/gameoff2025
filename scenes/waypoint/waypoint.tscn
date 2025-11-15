@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://pxtmt1hm5kur"]
+
+[ext_resource type="Script" uid="uid://bn5oldl14cjwi" path="res://scenes/waypoint/waypoint.gd" id="1_xfj44"]
+
+[node name="Waypoint" type="Area2D"]
+script = ExtResource("1_xfj44")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
