@@ -1,14 +1,33 @@
-[gd_scene load_steps=8 format=3 uid="uid://di1ho05qhyphj"]
+[gd_scene load_steps=14 format=3 uid="uid://di1ho05qhyphj"]
 
+[ext_resource type="Script" uid="uid://2t4w0l3wwuxy" path="res://scenes/world.gd" id="1_i7141"]
 [ext_resource type="PackedScene" uid="uid://ow3f32q2gor7" path="res://assets/tilesets/gameof_25_boat_map_1.tscn" id="2_1pp0p"]
 [ext_resource type="Script" uid="uid://dm84xs54y5fym" path="res://scenes/camera_2d.gd" id="3_njdnp"]
-[ext_resource type="PackedScene" uid="uid://c3gx3doaqh7f1" path="res://scenes/ai_target.tscn" id="4_71j4m"]
-[ext_resource type="PackedScene" uid="uid://coi61fndwsc6r" path="res://scenes/boat/boat_ai_body_2d.tscn" id="5_qfnet"]
+[ext_resource type="PackedScene" uid="uid://pxtmt1hm5kur" path="res://scenes/waypoint/waypoint.tscn" id="4_i7141"]
 [ext_resource type="Script" uid="uid://c3q2d760gcugr" path="res://scenes/boat/player_steering.gd" id="6_i7141"]
 [ext_resource type="PackedScene" uid="uid://b1du0y3mluexu" path="res://scenes/boat/boat_rigid_body_2d.tscn" id="6_qfnet"]
 [ext_resource type="Script" uid="uid://dj2ne3svfhmgv" path="res://scenes/boat/ai_steering.gd" id="7_i7141"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mrxx"]
+size = Vector2(900, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71j4m"]
+size = Vector2(600, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfnet"]
+size = Vector2(800, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7141"]
+size = Vector2(700, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7r4gi"]
+size = Vector2(700, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7kh3"]
+size = Vector2(30, 800)
+
 [node name="World" type="Node2D"]
+script = ExtResource("1_i7141")
 
 [node name="gameof_25_boat_map_1" parent="." instance=ExtResource("2_1pp0p")]
 
@@ -21,42 +40,104 @@ drag_top_margin = 0.1
 drag_right_margin = 0.1
 drag_bottom_margin = 0.1
 script = ExtResource("3_njdnp")
-target_nodes = Array[NodePath]([NodePath("../Player")])
+target_nodes = Array[NodePath]([NodePath("../Boats/Player")])
 
-[node name="AiTarget" parent="." instance=ExtResource("4_71j4m")]
-position = Vector2(1126, 495)
+[node name="Waypoints" type="Node2D" parent="."]
 
-[node name="AiTarget2" parent="." instance=ExtResource("4_71j4m")]
-position = Vector2(2715, 1154)
+[node name="Waypoint0" parent="Waypoints" instance=ExtResource("4_i7141")]
+position = Vector2(2616, 568)
+waypoint_number = 0
 
-[node name="AiTarget3" parent="." instance=ExtResource("4_71j4m")]
-position = Vector2(926, 2338)
+[node name="CollisionShape2D" parent="Waypoints/Waypoint0" index="0"]
+rotation = -1.1858517
+shape = SubResource("RectangleShape2D_4mrxx")
 
-[node name="BoatCharacterBody2d2" parent="." node_paths=PackedStringArray("targets") instance=ExtResource("5_qfnet")]
-position = Vector2(633, 768)
-targets = [NodePath("../AiTarget"), NodePath("../AiTarget2"), NodePath("../AiTarget3")]
+[node name="Waypoint1" parent="Waypoints" instance=ExtResource("4_i7141")]
+position = Vector2(2656, 1640)
 
-[node name="BoatCharacterBody2d3" parent="." node_paths=PackedStringArray("targets") instance=ExtResource("5_qfnet")]
-position = Vector2(782, 998)
-targets = [NodePath("../AiTarget"), NodePath("../AiTarget2"), NodePath("../AiTarget3")]
+[node name="CollisionShape2D" parent="Waypoints/Waypoint1" index="0"]
+rotation = 0.73129296
+shape = SubResource("RectangleShape2D_71j4m")
 
-[node name="BoatCharacterBody2d4" parent="." node_paths=PackedStringArray("targets") instance=ExtResource("5_qfnet")]
-position = Vector2(630, 917)
-targets = [NodePath("../AiTarget"), NodePath("../AiTarget2"), NodePath("../AiTarget3")]
+[node name="Waypoint2" parent="Waypoints" instance=ExtResource("4_i7141")]
+position = Vector2(1717.0059, 2397.2188)
+waypoint_number = 2
 
-[node name="Player" parent="." instance=ExtResource("6_qfnet")]
-position = Vector2(520, 824)
+[node name="CollisionShape2D" parent="Waypoints/Waypoint2" index="0"]
+rotation = 1.097812
+shape = SubResource("RectangleShape2D_qfnet")
 
-[node name="PlayerSteering" type="Node" parent="Player" node_paths=PackedStringArray("boat")]
+[node name="Waypoint3" parent="Waypoints" instance=ExtResource("4_i7141")]
+position = Vector2(736, 2104)
+waypoint_number = 3
+
+[node name="CollisionShape2D" parent="Waypoints/Waypoint3" index="0"]
+rotation = -0.6091199
+shape = SubResource("RectangleShape2D_i7141")
+
+[node name="Waypoint4" parent="Waypoints" instance=ExtResource("4_i7141")]
+position = Vector2(696, 1064)
+waypoint_number = 4
+
+[node name="CollisionShape2D" parent="Waypoints/Waypoint4" index="0"]
+rotation = 0.36651915
+shape = SubResource("RectangleShape2D_7r4gi")
+
+[node name="Waypoint5" parent="Waypoints" instance=ExtResource("4_i7141")]
+position = Vector2(8, -32)
+waypoint_number = 5
+
+[node name="CollisionShape2D" parent="Waypoints/Waypoint5" index="0"]
+position = Vector2(1336, 440)
+shape = SubResource("RectangleShape2D_w7kh3")
+
+[node name="Boats" type="Node2D" parent="."]
+
+[node name="Player" parent="Boats" instance=ExtResource("6_qfnet")]
+position = Vector2(1048, 309)
+
+[node name="PlayerSteering" type="Node" parent="Boats/Player" node_paths=PackedStringArray("boat")]
 script = ExtResource("6_i7141")
 boat = NodePath("..")
 metadata/_custom_type_script = "uid://c3q2d760gcugr"
 
-[node name="AIBoatRigidBody2D" parent="." instance=ExtResource("6_qfnet")]
-position = Vector2(512, 1056)
+[node name="AIBoatRigidBody2D" parent="Boats" instance=ExtResource("6_qfnet")]
+position = Vector2(1048, 456)
 
-[node name="AiSteering" type="NavigationAgent2D" parent="AIBoatRigidBody2D" node_paths=PackedStringArray("boat", "targets")]
+[node name="AiSteering" type="NavigationAgent2D" parent="Boats/AIBoatRigidBody2D" node_paths=PackedStringArray("boat", "targets")]
 script = ExtResource("7_i7141")
 boat = NodePath("..")
-targets = [NodePath("../../AiTarget"), NodePath("../../AiTarget2"), NodePath("../../AiTarget3")]
+targets = [NodePath("../../../Waypoints/Waypoint0"), NodePath("../../../Waypoints/Waypoint1"), NodePath("../../../Waypoints/Waypoint2"), NodePath("../../../Waypoints/Waypoint3"), NodePath("../../../Waypoints/Waypoint4"), NodePath("../../../Waypoints/Waypoint5")]
 metadata/_custom_type_script = "uid://dj2ne3svfhmgv"
+
+[node name="AIBoatRigidBody2D2" parent="Boats" instance=ExtResource("6_qfnet")]
+position = Vector2(1288, 304)
+
+[node name="AiSteering" type="NavigationAgent2D" parent="Boats/AIBoatRigidBody2D2" node_paths=PackedStringArray("boat", "targets")]
+script = ExtResource("7_i7141")
+boat = NodePath("..")
+targets = [NodePath("../../../Waypoints/Waypoint0"), NodePath("../../../Waypoints/Waypoint1"), NodePath("../../../Waypoints/Waypoint2"), NodePath("../../../Waypoints/Waypoint3"), NodePath("../../../Waypoints/Waypoint4"), NodePath("../../../Waypoints/Waypoint5")]
+metadata/_custom_type_script = "uid://dj2ne3svfhmgv"
+
+[node name="AIBoatRigidBody2D3" parent="Boats" instance=ExtResource("6_qfnet")]
+position = Vector2(1280, 464)
+
+[node name="AiSteering" type="NavigationAgent2D" parent="Boats/AIBoatRigidBody2D3" node_paths=PackedStringArray("boat", "targets")]
+script = ExtResource("7_i7141")
+boat = NodePath("..")
+targets = [NodePath("../../../Waypoints/Waypoint0"), NodePath("../../../Waypoints/Waypoint1"), NodePath("../../../Waypoints/Waypoint2"), NodePath("../../../Waypoints/Waypoint3"), NodePath("../../../Waypoints/Waypoint4"), NodePath("../../../Waypoints/Waypoint5")]
+metadata/_custom_type_script = "uid://dj2ne3svfhmgv"
+
+[connection signal="boat_reached_waypoint" from="Waypoints/Waypoint0" to="." method="_on_waypoint_boat_reached_waypoint"]
+[connection signal="boat_reached_waypoint" from="Waypoints/Waypoint1" to="." method="_on_waypoint_boat_reached_waypoint"]
+[connection signal="boat_reached_waypoint" from="Waypoints/Waypoint2" to="." method="_on_waypoint_boat_reached_waypoint"]
+[connection signal="boat_reached_waypoint" from="Waypoints/Waypoint3" to="." method="_on_waypoint_boat_reached_waypoint"]
+[connection signal="boat_reached_waypoint" from="Waypoints/Waypoint4" to="." method="_on_waypoint_boat_reached_waypoint"]
+[connection signal="boat_reached_waypoint" from="Waypoints/Waypoint5" to="." method="_on_waypoint_boat_reached_waypoint"]
+
+[editable path="Waypoints/Waypoint0"]
+[editable path="Waypoints/Waypoint1"]
+[editable path="Waypoints/Waypoint2"]
+[editable path="Waypoints/Waypoint3"]
+[editable path="Waypoints/Waypoint4"]
+[editable path="Waypoints/Waypoint5"]
