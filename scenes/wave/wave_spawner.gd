@@ -40,20 +40,21 @@ func _get_spawn_direction() -> Vector2:
 
 		DirectionMode.FORWARD:
 			# Use the node's rotation to determine forward direction
-			dir =  Vector2.RIGHT.rotated(global_rotation)
+			dir = Vector2.RIGHT.rotated(global_rotation)
 
 		DirectionMode.VELOCITY:
 			# Fallback to forward direction if no velocity
-			dir =  Vector2.RIGHT.rotated(global_rotation)
+			dir = Vector2.RIGHT.rotated(global_rotation)
 			if movement_body and movement_body is RigidBody2D:
 				var vel = movement_body.linear_velocity
 				if vel.length() > 0.1:
-					dir =  vel.normalized()
+					dir = vel.normalized()
 			elif movement_body and movement_body is CharacterBody2D:
 				var vel = movement_body.velocity
 				if vel.length() > 0.1:
-					dir =  vel.normalized()
+					dir = vel.normalized()
 	return dir
+
 
 ## Call this from code to spawn a wave in a specific direction
 func spawn_wave_custom(
