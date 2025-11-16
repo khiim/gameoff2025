@@ -93,6 +93,7 @@ shape = SubResource("RectangleShape2D_w7kh3")
 [node name="Boats" type="Node2D" parent="."]
 
 [node name="Player" parent="Boats" instance=ExtResource("6_qfnet")]
+unique_name_in_owner = true
 position = Vector2(1048, 309)
 
 [node name="PlayerSteering" type="Node" parent="Boats/Player" node_paths=PackedStringArray("boat")]
@@ -126,6 +127,18 @@ script = ExtResource("7_i7141")
 boat = NodePath("..")
 targets = [NodePath("../../../Waypoints/Waypoint0"), NodePath("../../../Waypoints/Waypoint1"), NodePath("../../../Waypoints/Waypoint2"), NodePath("../../../Waypoints/Waypoint3"), NodePath("../../../Waypoints/Waypoint4"), NodePath("../../../Waypoints/Waypoint5")]
 metadata/_custom_type_script = "uid://dj2ne3svfhmgv"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StatusRichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "Lap 1/3"
 
 [connection signal="boat_reached_waypoint" from="Waypoints/Waypoint0" to="." method="_on_waypoint_boat_reached_waypoint"]
 [connection signal="boat_reached_waypoint" from="Waypoints/Waypoint1" to="." method="_on_waypoint_boat_reached_waypoint"]
