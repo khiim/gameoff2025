@@ -84,11 +84,10 @@ rotation = 0.36651915
 shape = SubResource("RectangleShape2D_7r4gi")
 
 [node name="Waypoint5" parent="Waypoints" instance=ExtResource("4_i7141")]
-position = Vector2(8, -32)
+position = Vector2(1368, 424)
 waypoint_number = 5
 
 [node name="CollisionShape2D" parent="Waypoints/Waypoint5" index="0"]
-position = Vector2(1336, 440)
 shape = SubResource("RectangleShape2D_w7kh3")
 
 [node name="Boats" type="Node2D" parent="."]
