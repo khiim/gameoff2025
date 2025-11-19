@@ -61,6 +61,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if state.linear_velocity.length() > absolute_max_speed:
 		state.linear_velocity = state.linear_velocity.normalized() * absolute_max_speed
 
+
 func is_boat_infront() -> bool:
 	for body in $BoatDetecter.get_overlapping_bodies():
 		if body is Boat and body != self:

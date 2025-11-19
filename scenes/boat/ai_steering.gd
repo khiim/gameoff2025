@@ -40,7 +40,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if wave_cooldown > 0:
 		wave_cooldown -= _delta
-	
+
 	if is_navigation_finished():
 		_target_index = (_target_index + 1) % targets.size()
 		target_position = targets[_target_index].global_position
@@ -50,4 +50,3 @@ func _physics_process(_delta: float) -> void:
 	if boat.is_boat_infront() and wave_cooldown <= 0:
 		wave_cooldown = wave_cooldown_time
 		boat.spawn_wave()
-	
