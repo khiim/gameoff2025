@@ -41,6 +41,8 @@ drag_right_margin = 0.1
 drag_bottom_margin = 0.1
 script = ExtResource("3_njdnp")
 target_nodes = Array[NodePath]([NodePath("../Boats/Player")])
+zoom_min = 0.3
+zoom_max = 0.8
 
 [node name="Waypoints" type="Node2D" parent="."]
 
