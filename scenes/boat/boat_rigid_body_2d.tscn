@@ -25,3 +25,8 @@ hframes = 3
 polygon = PackedVector2Array(17, 2, 3, 7, -3, 7, -19, 4, -19, -3, -3, -6, 4, -6, 17, -1)
 
 [node name="WaveSpawner" parent="." instance=ExtResource("3_bejdg")]
+
+[node name="BoatDetecter" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BoatDetecter"]
+polygon = PackedVector2Array(24, 1, 196, -21, 196, 19)
