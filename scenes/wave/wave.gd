@@ -14,7 +14,7 @@ var _max_radius: float = 500.0
 var _current_radius: float = 0.0
 var _growth_rate: float = 150.0
 var _fade_start_percent: float = 0.7
-var _hit_boats: Array[Boat] = []
+var _hit_boats: Array[RigidBody2D] = []
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var sprite: Sprite2D = $Sprite2D
@@ -86,11 +86,11 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 
 
-func _on_body_entered(body: Node2D) -> void:
-	if body is Boat and body not in _hit_boats:
+func _on_body_entered(body: RigidBody2D) -> void:
+	if body not in _hit_boats:
 		_hit_boats.append(body)
 
 
-func _on_body_exited(body: Node2D) -> void:
-	if body is Boat:
+func _on_body_exited(body: RigidBody2D) -> void:
+	if body in _hit_boats:
 		_hit_boats.erase(body)
