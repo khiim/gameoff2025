@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://di1ho05qhyphj"]
+[gd_scene load_steps=16 format=3 uid="uid://di1ho05qhyphj"]
 
 [ext_resource type="Script" uid="uid://2t4w0l3wwuxy" path="res://scenes/world.gd" id="1_i7141"]
 [ext_resource type="PackedScene" uid="uid://ow3f32q2gor7" path="res://assets/tilesets/gameof_25_boat_map_1.tscn" id="2_1pp0p"]
+[ext_resource type="PackedScene" uid="uid://bam3cnp74xt0n" path="res://scenes/maps/racetrack.tscn" id="2_7r4gi"]
 [ext_resource type="Script" uid="uid://dm84xs54y5fym" path="res://scenes/camera_2d.gd" id="3_njdnp"]
 [ext_resource type="PackedScene" uid="uid://pxtmt1hm5kur" path="res://scenes/waypoint/waypoint.tscn" id="4_i7141"]
 [ext_resource type="Script" uid="uid://c3q2d760gcugr" path="res://scenes/boat/player_steering.gd" id="6_i7141"]
@@ -29,6 +30,8 @@ size = Vector2(30, 800)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_i7141")
+
+[node name="Racetrack" parent="." instance=ExtResource("2_7r4gi")]
 
 [node name="gameof_25_boat_map_1" parent="." instance=ExtResource("2_1pp0p")]
 

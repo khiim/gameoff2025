@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://bam3cnp74xt0n"]
+
+[ext_resource type="Texture2D" uid="uid://nmgyikrm15w4" path="res://assets/ocean/Ocean_MiddleRipple.png" id="1_eyawi"]
+[ext_resource type="Shader" uid="uid://cyq3uum6thrl2" path="res://scenes/maps/ocean_shader.gdshader" id="1_lt5xr"]
+[ext_resource type="Texture2D" uid="uid://tpknoayymq33" path="res://assets/ocean/Ocean_UpperRipple.png" id="2_lt5xr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nryjt"]
+shader = ExtResource("1_lt5xr")
+shader_parameter/wobble_speed = 100.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lt5xr"]
+shader = ExtResource("1_lt5xr")
+shader_parameter/wobble_speed = 0.0
+
+[node name="Racetrack" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.023529412, 0.29803923, 0.44705883, 1)
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(2000, 1125)
+repeat_times = 10
+
+[node name="OceanMiddleRipple" type="Sprite2D" parent="Parallax2D"]
+material = SubResource("ShaderMaterial_nryjt")
+texture = ExtResource("1_eyawi")
+
+[node name="Parallax2D2" type="Parallax2D" parent="."]
+repeat_size = Vector2(2000, 1125)
+repeat_times = 10
+
+[node name="OceanUpperRipple" type="Sprite2D" parent="Parallax2D2"]
+material = SubResource("ShaderMaterial_lt5xr")
+texture = ExtResource("2_lt5xr")
