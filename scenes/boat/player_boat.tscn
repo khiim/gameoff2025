@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1q82althq3qi"]
+
+[ext_resource type="PackedScene" uid="uid://b1du0y3mluexu" path="res://scenes/boat/boat.tscn" id="1_w1kd1"]
+[ext_resource type="Script" uid="uid://c3q2d760gcugr" path="res://scenes/boat/player_steering.gd" id="2_3jr3k"]
+
+[node name="PlayerBoat" instance=ExtResource("1_w1kd1")]
+
+[node name="PlayerSteering" type="Node" parent="." index="4" node_paths=PackedStringArray("boat")]
+script = ExtResource("2_3jr3k")
+boat = NodePath("..")
+metadata/_custom_type_script = "uid://c3q2d760gcugr"

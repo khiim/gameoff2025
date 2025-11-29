@@ -11,18 +11,26 @@ var _finished: Array[String] = []
 var _player_finished: bool = false
 var _player_place: int = 0
 
-@onready var boats: Node2D = $Boats
-@onready var waypoints: Node2D = $Waypoints
+@onready var boats: Node2D = %Boats
+@onready var waypoints: Node2D = %Waypoints
 @onready var player: Boat = %Player
 @onready var status_label: RichTextLabel = %StatusRichTextLabel
 
 
 func _ready() -> void:
-	var all_waypoints = waypoints.find_children("*", "Waypoint")
+	var all_waypoints := waypoints.find_children("*", "Waypoint")
 	_number_of_waypoints = all_waypoints.size()
+
+	var waypoint_markers: Array[Node2D] = []
+	for waypoint in all_waypoints:
+		if waypoint is Node2D:
+			waypoint_markers.append(waypoint)
 
 	var all_boats = boats.find_children("*", "Boat")
 	for boat in all_boats:
+		if boat is Boat:
+			if boat.has_node("AiSteering"):
+				boat.get_node("AiSteering").targets = waypoint_markers
 		_boat_next_waypoint[boat.name] = 0
 		_boat_lap[boat.name] = 0
 

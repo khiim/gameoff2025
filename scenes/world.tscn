@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://dm84xs54y5fym" path="res://scenes/camera_2d.gd" id="3_njdnp"]
 [ext_resource type="PackedScene" uid="uid://pxtmt1hm5kur" path="res://scenes/waypoint/waypoint.tscn" id="4_i7141"]
 [ext_resource type="Script" uid="uid://c3q2d760gcugr" path="res://scenes/boat/player_steering.gd" id="6_i7141"]
-[ext_resource type="PackedScene" uid="uid://b1du0y3mluexu" path="res://scenes/boat/boat_rigid_body_2d.tscn" id="6_qfnet"]
-[ext_resource type="Script" uid="uid://dj2ne3svfhmgv" path="res://scenes/boat/ai_steering.gd" id="7_i7141"]
+[ext_resource type="PackedScene" uid="uid://b1du0y3mluexu" path="res://scenes/boat/boat.tscn" id="6_qfnet"]
+[ext_resource type="PackedScene" uid="uid://ccijcl7av0lp5" path="res://scenes/boat/ai_boat.tscn" id="7_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://6m0o5kdt4jmy" path="res://scenes/obstacles/log.tscn" id="8_4mrxx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4mrxx"]
@@ -46,6 +46,7 @@ zoom_min = 0.3
 zoom_max = 0.8
 
 [node name="Waypoints" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [node name="Waypoint0" parent="Waypoints" instance=ExtResource("4_i7141")]
 position = Vector2(2616, 568)
@@ -94,6 +95,7 @@ waypoint_number = 5
 shape = SubResource("RectangleShape2D_w7kh3")
 
 [node name="Boats" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [node name="Player" parent="Boats" instance=ExtResource("6_qfnet")]
 unique_name_in_owner = true
@@ -104,32 +106,14 @@ script = ExtResource("6_i7141")
 boat = NodePath("..")
 metadata/_custom_type_script = "uid://c3q2d760gcugr"
 
-[node name="AIBoatRigidBody2D" parent="Boats" instance=ExtResource("6_qfnet")]
-position = Vector2(1048, 456)
+[node name="AiBoat" parent="Boats" instance=ExtResource("7_4mrxx")]
+position = Vector2(1048, 464)
 
-[node name="AiSteering" type="NavigationAgent2D" parent="Boats/AIBoatRigidBody2D" node_paths=PackedStringArray("boat", "targets")]
-script = ExtResource("7_i7141")
-boat = NodePath("..")
-targets = [NodePath("../../../Waypoints/Waypoint0"), NodePath("../../../Waypoints/Waypoint1"), NodePath("../../../Waypoints/Waypoint2"), NodePath("../../../Waypoints/Waypoint3"), NodePath("../../../Waypoints/Waypoint4"), NodePath("../../../Waypoints/Waypoint5")]
-metadata/_custom_type_script = "uid://dj2ne3svfhmgv"
+[node name="AiBoat2" parent="Boats" instance=ExtResource("7_4mrxx")]
+position = Vector2(840, 544)
 
-[node name="AIBoatRigidBody2D2" parent="Boats" instance=ExtResource("6_qfnet")]
-position = Vector2(1288, 304)
-
-[node name="AiSteering" type="NavigationAgent2D" parent="Boats/AIBoatRigidBody2D2" node_paths=PackedStringArray("boat", "targets")]
-script = ExtResource("7_i7141")
-boat = NodePath("..")
-targets = [NodePath("../../../Waypoints/Waypoint0"), NodePath("../../../Waypoints/Waypoint1"), NodePath("../../../Waypoints/Waypoint2"), NodePath("../../../Waypoints/Waypoint3"), NodePath("../../../Waypoints/Waypoint4"), NodePath("../../../Waypoints/Waypoint5")]
-metadata/_custom_type_script = "uid://dj2ne3svfhmgv"
-
-[node name="AIBoatRigidBody2D3" parent="Boats" instance=ExtResource("6_qfnet")]
-position = Vector2(1280, 464)
-
-[node name="AiSteering" type="NavigationAgent2D" parent="Boats/AIBoatRigidBody2D3" node_paths=PackedStringArray("boat", "targets")]
-script = ExtResource("7_i7141")
-boat = NodePath("..")
-targets = [NodePath("../../../Waypoints/Waypoint0"), NodePath("../../../Waypoints/Waypoint1"), NodePath("../../../Waypoints/Waypoint2"), NodePath("../../../Waypoints/Waypoint3"), NodePath("../../../Waypoints/Waypoint4"), NodePath("../../../Waypoints/Waypoint5")]
-metadata/_custom_type_script = "uid://dj2ne3svfhmgv"
+[node name="AiBoat3" parent="Boats" instance=ExtResource("7_4mrxx")]
+position = Vector2(992, 680)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
