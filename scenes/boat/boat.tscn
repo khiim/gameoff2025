@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1du0y3mluexu"]
+[gd_scene load_steps=9 format=3 uid="uid://b1du0y3mluexu"]
 
 [ext_resource type="Script" uid="uid://dwe1ostyt2hfj" path="res://scenes/boat/boat.gd" id="1_myh2m"]
 [ext_resource type="Texture2D" uid="uid://b4vr3wkjsborj" path="res://assets/boat/raceboat.png" id="2_o12wg"]
 [ext_resource type="PackedScene" uid="uid://cag6nff2odw15" path="res://scenes/wave/wave_spawner.tscn" id="3_dr53j"]
+[ext_resource type="AudioStream" uid="uid://bwu86m4q5p27s" path="res://assets/sounds/speedboat-loop-101437.mp3" id="4_o12wg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jw4ub"]
 friction = 0.35
@@ -67,3 +68,8 @@ polygon = PackedVector2Array(17, 2, 3, 7, -3, 7, -19, 4, -19, -3, -3, -6, 4, -6,
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BoatDetecter"]
 polygon = PackedVector2Array(24, 1, 196, -21, 196, 19)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_o12wg")
+max_distance = 1000.0
+attenuation = 2.0705287
