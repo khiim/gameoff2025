@@ -10,6 +10,7 @@ var _number_of_waypoints: int = 0
 var _finished: Array[String] = []
 var _player_finished: bool = false
 var _player_place: int = 0
+var _all_boats: Array[Boat] = []
 
 @onready var boats: Node2D = %Boats
 @onready var waypoints: Node2D = %Waypoints
@@ -29,6 +30,7 @@ func _ready() -> void:
 	var all_boats = boats.find_children("*", "Boat")
 	for boat in all_boats:
 		if boat is Boat:
+			_all_boats.append(boat)
 			if boat.has_node("AiSteering"):
 				boat.get_node("AiSteering").targets = waypoint_markers
 		_boat_next_waypoint[boat.name] = 0
