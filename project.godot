@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="gameoff2025"
+config/name="Need 4 Waves"
 run/main_scene="res://scenes/world.tscn"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
@@ -18,6 +18,10 @@ config/icon="res://icon.svg"
 [display]
 
 window/stretch/mode="canvas_items"
+
+[gui]
+
+theme/custom_font="uid://dmi67elgnc754"
 
 [input]
 

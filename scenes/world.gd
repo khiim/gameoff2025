@@ -50,7 +50,7 @@ func _update_laps() -> void:
 
 	status_label.clear()
 	status_label.push_bold()
-	status_label.push_color(Color.BLACK)
+	status_label.append_text("Lap ")
 	status_label.append_text(str(player_lap + 1))
 	status_label.append_text("/")
 	status_label.append_text(str(laps))
@@ -58,7 +58,6 @@ func _update_laps() -> void:
 	status_label.pop_all()
 
 	status_label.append_text("\n\n")
-	status_label.push_color(Color.BLACK)
 
 	if not _finished.is_empty():
 		status_label.append_text("Place:\n")
