@@ -1,12 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://di1ho05qhyphj"]
+[gd_scene load_steps=15 format=3 uid="uid://di1ho05qhyphj"]
 
 [ext_resource type="Script" uid="uid://2t4w0l3wwuxy" path="res://scenes/world.gd" id="1_i7141"]
 [ext_resource type="PackedScene" uid="uid://ow3f32q2gor7" path="res://assets/tilesets/gameof_25_boat_map_1.tscn" id="2_1pp0p"]
 [ext_resource type="PackedScene" uid="uid://bam3cnp74xt0n" path="res://scenes/maps/racetrack.tscn" id="2_7r4gi"]
 [ext_resource type="Script" uid="uid://dm84xs54y5fym" path="res://scenes/camera_2d.gd" id="3_njdnp"]
 [ext_resource type="PackedScene" uid="uid://pxtmt1hm5kur" path="res://scenes/waypoint/waypoint.tscn" id="4_i7141"]
-[ext_resource type="Script" uid="uid://c3q2d760gcugr" path="res://scenes/boat/player_steering.gd" id="6_i7141"]
-[ext_resource type="PackedScene" uid="uid://b1du0y3mluexu" path="res://scenes/boat/boat.tscn" id="6_qfnet"]
+[ext_resource type="PackedScene" uid="uid://c1q82althq3qi" path="res://scenes/boat/player_boat.tscn" id="6_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://ccijcl7av0lp5" path="res://scenes/boat/ai_boat.tscn" id="7_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://6m0o5kdt4jmy" path="res://scenes/obstacles/log.tscn" id="8_4mrxx"]
 
@@ -100,23 +99,21 @@ shape = SubResource("RectangleShape2D_w7kh3")
 [node name="Boats" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="Player" parent="Boats" instance=ExtResource("6_qfnet")]
+[node name="Player" parent="Boats" instance=ExtResource("6_4mrxx")]
 unique_name_in_owner = true
-position = Vector2(1048, 309)
-
-[node name="PlayerSteering" type="Node" parent="Boats/Player" node_paths=PackedStringArray("boat")]
-script = ExtResource("6_i7141")
-boat = NodePath("..")
-metadata/_custom_type_script = "uid://c3q2d760gcugr"
+position = Vector2(1008, 312)
 
 [node name="AiBoat" parent="Boats" instance=ExtResource("7_4mrxx")]
 position = Vector2(1048, 464)
+modulate_color = Color(0.16470589, 1, 1, 1)
 
 [node name="AiBoat2" parent="Boats" instance=ExtResource("7_4mrxx")]
 position = Vector2(840, 544)
+modulate_color = Color(1, 0.2784314, 1, 1)
 
 [node name="AiBoat3" parent="Boats" instance=ExtResource("7_4mrxx")]
 position = Vector2(992, 680)
+modulate_color = Color(0.34509805, 0.8509804, 0.14509805, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

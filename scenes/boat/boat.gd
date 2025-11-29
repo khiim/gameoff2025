@@ -12,8 +12,14 @@ extends RigidBody2D
 @export var linear_damping_factor: float = 0.985
 @export var angular_damping_factor: float = 0.92
 
+@export var modulate_color: Color = Color.WHITE
+
 var _steer_input: float = 0.0
 var _throttle: float = 0.0
+
+@onready var sprite: Sprite2D = $Sprite
+@onready var gpu_particles_2d: GPUParticles2D = $GPUParticles2D
+@onready var gpu_particles_2d_2: GPUParticles2D = $GPUParticles2D2
 
 
 func spawn_wave() -> void:
@@ -24,6 +30,10 @@ func spawn_wave() -> void:
 func set_input(steer_input: float, throttle: float) -> void:
 	_steer_input = steer_input
 	_throttle = throttle
+
+
+func _ready() -> void:
+	sprite.modulate = modulate_color
 
 
 func _physics_process(_delta: float) -> void:
@@ -53,6 +63,23 @@ func _physics_process(_delta: float) -> void:
 	# Steering
 	apply_torque(_steer_input * turn_torque)
 
+	# Update graphics
+	if is_zero_approx(_steer_input):
+		sprite.frame = 0
+	elif _steer_input < 0:
+		sprite.frame = 1
+	elif _steer_input > 0:
+		sprite.frame = 2
+	else:
+		sprite.frame = 0
+
+	if is_zero_approx(_throttle):
+		_set_particles(false, false)
+	elif _throttle > 0:
+		_set_particles(true, false)
+	elif _throttle < 0:
+		_set_particles(true, true)
+
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	state.linear_velocity *= linear_damping_factor
@@ -60,6 +87,13 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 
 	if state.linear_velocity.length() > absolute_max_speed:
 		state.linear_velocity = state.linear_velocity.normalized() * absolute_max_speed
+
+
+func _set_particles(on: bool, reverse: bool) -> void:
+	gpu_particles_2d.emitting = on
+	gpu_particles_2d_2.emitting = on
+	gpu_particles_2d.scale.x = 1 if not reverse else -1
+	gpu_particles_2d_2.scale.x = 1 if not reverse else -1
 
 
 func is_boat_infront() -> bool:

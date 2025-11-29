@@ -1,8 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://bam3cnp74xt0n"]
+[gd_scene load_steps=8 format=3 uid="uid://bam3cnp74xt0n"]
 
 [ext_resource type="Texture2D" uid="uid://nmgyikrm15w4" path="res://assets/ocean/Ocean_MiddleRipple.png" id="1_eyawi"]
 [ext_resource type="Shader" uid="uid://cyq3uum6thrl2" path="res://scenes/maps/ocean_shader.gdshader" id="1_lt5xr"]
 [ext_resource type="Texture2D" uid="uid://tpknoayymq33" path="res://assets/ocean/Ocean_UpperRipple.png" id="2_lt5xr"]
+
+[sub_resource type="Gradient" id="Gradient_lt5xr"]
+offsets = PackedFloat32Array(0, 0.52, 1)
+colors = PackedColorArray(0.023529412, 0.29803923, 0.44705883, 1, 0.007843138, 0.42352942, 0.5019608, 1, 0.5529412, 0.7058824, 0.6784314, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nryjt"]
+gradient = SubResource("Gradient_lt5xr")
+fill_from = Vector2(0, 0.47196263)
+fill_to = Vector2(1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nryjt"]
 shader = ExtResource("1_lt5xr")
@@ -17,15 +26,13 @@ shader_parameter/wobble_speed = 0.0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-color = Color(0.023529412, 0.29803923, 0.44705883, 1)
+texture = SubResource("GradientTexture2D_nryjt")
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 repeat_size = Vector2(2000, 1125)
