@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://di1ho05qhyphj"]
+[gd_scene load_steps=16 format=3 uid="uid://di1ho05qhyphj"]
 
 [ext_resource type="Script" uid="uid://2t4w0l3wwuxy" path="res://scenes/world.gd" id="1_i7141"]
 [ext_resource type="PackedScene" uid="uid://ow3f32q2gor7" path="res://assets/tilesets/gameof_25_boat_map_1.tscn" id="2_1pp0p"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c1q82althq3qi" path="res://scenes/boat/player_boat.tscn" id="6_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://ccijcl7av0lp5" path="res://scenes/boat/ai_boat.tscn" id="7_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://6m0o5kdt4jmy" path="res://scenes/obstacles/log.tscn" id="8_4mrxx"]
+[ext_resource type="PackedScene" uid="uid://bslenn0a0ou5u" path="res://scenes/ui/ready_set_go.tscn" id="9_7r4gi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4mrxx"]
 size = Vector2(900, 30)
@@ -179,6 +180,8 @@ rotation = -2.0547748
 [node name="Log9" parent="." instance=ExtResource("8_4mrxx")]
 position = Vector2(466, 1166)
 rotation = -1.1014966
+
+[node name="ReadySetGo" parent="." instance=ExtResource("9_7r4gi")]
 
 [connection signal="boat_reached_waypoint" from="Waypoints/Waypoint0" to="." method="_on_waypoint_boat_reached_waypoint"]
 [connection signal="boat_reached_waypoint" from="Waypoints/Waypoint1" to="." method="_on_waypoint_boat_reached_waypoint"]

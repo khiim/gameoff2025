@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bslenn0a0ou5u"]
+
+[ext_resource type="Script" uid="uid://b53i7t64k2s2i" path="res://scenes/ui/ready_set_go.gd" id="1_txiss"]
+[ext_resource type="Texture2D" uid="uid://lrv55ylt08p8" path="res://assets/ui/ready.png" id="2_uri28"]
+[ext_resource type="Texture2D" uid="uid://d2q4b12tlohua" path="res://assets/ui/set.png" id="3_ubfi3"]
+[ext_resource type="Texture2D" uid="uid://dv80gx6kukf73" path="res://assets/ui/go.png" id="4_i4qg2"]
+
+[node name="ReadySetGo" type="CanvasLayer"]
+script = ExtResource("1_txiss")
+
+[node name="Ready" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 0.50980395, 0, 0)
+position = Vector2(576, 296)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_uri28")
+
+[node name="Set" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(576, 280)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_ubfi3")
+
+[node name="Go" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(584, 280)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_i4qg2")

@@ -7,6 +7,7 @@ signal player_finished(place: int)
 var _boat_next_waypoint: Dictionary[String, int] = {}
 var _boat_lap: Dictionary[String, int] = {}
 var _number_of_waypoints: int = 0
+var _waypoint_markers: Array[Node2D] = []
 var _finished: Array[String] = []
 var _player_finished: bool = false
 var _player_place: int = 0
@@ -16,27 +17,33 @@ var _all_boats: Array[Boat] = []
 @onready var waypoints: Node2D = %Waypoints
 @onready var player: Boat = %Player
 @onready var status_label: RichTextLabel = %StatusRichTextLabel
+@onready var ready_set_go: ReadySetGo = $ReadySetGo
 
 
 func _ready() -> void:
+	ready_set_go.go.connect(_on_go)
 	var all_waypoints := waypoints.find_children("*", "Waypoint")
 	_number_of_waypoints = all_waypoints.size()
 
-	var waypoint_markers: Array[Node2D] = []
 	for waypoint in all_waypoints:
 		if waypoint is Node2D:
-			waypoint_markers.append(waypoint)
+			_waypoint_markers.append(waypoint)
 
 	var all_boats = boats.find_children("*", "Boat")
 	for boat in all_boats:
 		if boat is Boat:
 			_all_boats.append(boat)
 			if boat.has_node("AiSteering"):
-				boat.get_node("AiSteering").targets = waypoint_markers
+				boat.get_node("AiSteering").targets = _waypoint_markers
 		_boat_next_waypoint[boat.name] = 0
 		_boat_lap[boat.name] = 0
 
 	_update_laps()
+	boats.process_mode = Node.PROCESS_MODE_DISABLED
+
+
+func _on_go() -> void:
+	boats.process_mode = Node.PROCESS_MODE_INHERIT
 
 
 func _on_waypoint_boat_reached_waypoint(boat: Boat, number: int) -> void:
