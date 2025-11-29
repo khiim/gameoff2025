@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccijcl7av0lp5"]
+
+[ext_resource type="PackedScene" uid="uid://b1du0y3mluexu" path="res://scenes/boat/boat.tscn" id="1_xtqng"]
+[ext_resource type="Script" uid="uid://dj2ne3svfhmgv" path="res://scenes/boat/ai_steering.gd" id="2_2ys6a"]
+
+[node name="AiBoat" instance=ExtResource("1_xtqng")]
+
+[node name="AiSteering" type="NavigationAgent2D" parent="." index="4" node_paths=PackedStringArray("boat")]
+script = ExtResource("2_2ys6a")
+boat = NodePath("..")
+metadata/_custom_type_script = "uid://dj2ne3svfhmgv"
