@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://di1ho05qhyphj"]
+[gd_scene load_steps=9 format=3 uid="uid://di1ho05qhyphj"]
 
 [ext_resource type="Script" uid="uid://2t4w0l3wwuxy" path="res://scenes/world.gd" id="1_i7141"]
 [ext_resource type="PackedScene" uid="uid://bam3cnp74xt0n" path="res://scenes/maps/racetrack.tscn" id="2_7r4gi"]
@@ -92,22 +92,6 @@ waypoint_number = 12
 position = Vector2(2272, 504)
 waypoint_number = 13
 
-[node name="Direction" parent="Waypoints" instance=ExtResource("5_7r4gi")]
-position = Vector2(3497, 2950)
-rotation = 3.1221833
-
-[node name="Direction2" parent="Waypoints" instance=ExtResource("5_7r4gi")]
-position = Vector2(3453, 3502)
-rotation = 3.1412797
-
-[node name="Direction3" parent="Waypoints" instance=ExtResource("5_7r4gi")]
-position = Vector2(3952, 3230)
-rotation = -1.5464368
-
-[node name="Direction4" parent="Waypoints" instance=ExtResource("5_7r4gi")]
-position = Vector2(3071, 3217)
-rotation = -1.5822687
-
 [node name="Boats" type="Node2D" parent="."]
 unique_name_in_owner = true
 
@@ -160,43 +144,23 @@ Place:
 3. Davy Jones
 4. Captain Hook"
 
-[node name="Log" parent="." instance=ExtResource("8_4mrxx")]
-position = Vector2(2728, 520)
-rotation = 0.41834962
-
-[node name="Log2" parent="." instance=ExtResource("8_4mrxx")]
-position = Vector2(2407.0002, 3300.0002)
-rotation = 2.8702435
-
-[node name="Log3" parent="." instance=ExtResource("8_4mrxx")]
-position = Vector2(3392, 592)
-rotation = -1.1143266
-
-[node name="Log4" parent="." instance=ExtResource("8_4mrxx")]
-position = Vector2(984, 3120)
-rotation = -1.8144404
-
-[node name="Log5" parent="." instance=ExtResource("8_4mrxx")]
-position = Vector2(2992.0002, 3264)
-rotation = 0.54631346
-
-[node name="Log6" parent="." instance=ExtResource("8_4mrxx")]
-position = Vector2(1472, 415.99997)
-rotation = -0.27848402
-
-[node name="Log7" parent="." instance=ExtResource("8_4mrxx")]
-position = Vector2(3860, 1780.0001)
-rotation = 2.0476832
-
-[node name="Log8" parent="." instance=ExtResource("8_4mrxx")]
-position = Vector2(375.99994, 1520)
-rotation = -2.0547748
-
-[node name="Log9" parent="." instance=ExtResource("8_4mrxx")]
-position = Vector2(466, 1166)
-rotation = -1.1014966
-
 [node name="ReadySetGo" parent="." instance=ExtResource("9_7r4gi")]
+
+[node name="Direction" parent="." instance=ExtResource("5_7r4gi")]
+position = Vector2(3503, 2903)
+rotation = 3.1161916
+
+[node name="Direction2" parent="." instance=ExtResource("5_7r4gi")]
+position = Vector2(3463, 3500)
+rotation = -3.106435
+
+[node name="Direction3" parent="." instance=ExtResource("5_7r4gi")]
+position = Vector2(3908, 3237)
+rotation = -1.549145
+
+[node name="Direction4" parent="." instance=ExtResource("5_7r4gi")]
+position = Vector2(3152, 3194)
+rotation = -1.5385903
 
 [connection signal="boat_reached_waypoint" from="Waypoints/Waypoint0" to="." method="_on_waypoint_boat_reached_waypoint"]
 [connection signal="boat_reached_waypoint" from="Waypoints/Waypoint1" to="." method="_on_waypoint_boat_reached_waypoint"]
