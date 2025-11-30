@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://sdfducqj8igs" path="res://assets/tilesets/extras.png" id="1_2ird0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2ird0"]
+friction = 0.8
 rough = true
 bounce = 0.25
-absorbent = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ird0"]
 size = Vector2(32.668922, 79.11979)
@@ -15,10 +15,8 @@ collision_layer = 8
 collision_mask = 11
 mass = 20.0
 physics_material_override = SubResource("PhysicsMaterial_2ird0")
-inertia = 1.0
-linear_damp_mode = 1
-linear_damp = 1.0
-angular_damp = 0.7
+inertia = 5.0
+max_contacts_reported = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_2ird0")
