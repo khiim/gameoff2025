@@ -49,10 +49,12 @@ func _ready() -> void:
 func _on_go() -> void:
 	boats.process_mode = Node.PROCESS_MODE_INHERIT
 
+
 func _add_lap(name: String, t: float) -> void:
 	if not _boat_lap_times.has(name):
 		_boat_lap_times[name] = []
 	_boat_lap_times[name].append(t)
+
 
 func _on_waypoint_boat_reached_waypoint(boat: Boat, number: int) -> void:
 	if _boat_next_waypoint[boat.name] == number:
@@ -70,10 +72,12 @@ func _on_waypoint_boat_reached_waypoint(boat: Boat, number: int) -> void:
 		else:
 			_boat_next_waypoint[boat.name] += 1
 
+
 func _format_time(seconds: float) -> String:
 	var minutes = int(seconds) / 60
 	var secs = int(seconds) % 60
-	return str(minutes)+ "m" + str(secs).lpad(2, '0') + "s"
+	return str(minutes) + "m" + str(secs).lpad(2, "0") + "s"
+
 
 func _update_laps() -> void:
 	var player_lap: int = _boat_lap[player.name]
@@ -94,7 +98,7 @@ func _update_laps() -> void:
 		for i in range(0, _finished.size()):
 			var time_now = _boat_lap_times[_finished[i]][_boat_lap_times[_finished[i]].size() - 1]
 			var time_elapsed = _format_time(time_now - _start_time)
-			status_label.append_text(str(i + 1) + ". " + _finished[i] + " : " + time_elapsed+"\n")
+			status_label.append_text(str(i + 1) + ". " + _finished[i] + " : " + time_elapsed + "\n")
 
 
 func _boat_finished(boat: Boat) -> void:

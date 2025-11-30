@@ -39,6 +39,7 @@ func _ready() -> void:
 	sprite.modulate = modulate_color
 	audio_stream_player_2d.play()
 
+
 func _physics_process(_delta: float) -> void:
 	# Get forward and right
 	var forward: Vector2 = Vector2.RIGHT.rotated(rotation)
