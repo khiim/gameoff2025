@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://di1ho05qhyphj"]
+[gd_scene load_steps=11 format=3 uid="uid://di1ho05qhyphj"]
 
 [ext_resource type="Script" uid="uid://2t4w0l3wwuxy" path="res://scenes/world.gd" id="1_i7141"]
 [ext_resource type="PackedScene" uid="uid://bam3cnp74xt0n" path="res://scenes/maps/racetrack.tscn" id="2_7r4gi"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ccijcl7av0lp5" path="res://scenes/boat/ai_boat.tscn" id="7_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://bslenn0a0ou5u" path="res://scenes/ui/ready_set_go.tscn" id="9_7r4gi"]
 [ext_resource type="PackedScene" uid="uid://b7jeuiffd56y5" path="res://scenes/ui/pause_menu.tscn" id="9_w7kh3"]
+[ext_resource type="PackedScene" uid="uid://dbov1xdo5btqg" path="res://scenes/fade_transition.tscn" id="10_w7kh3"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_i7141")
@@ -143,6 +144,9 @@ Place:
 2. Blackbeard
 3. Davy Jones
 4. Captain Hook"
+
+[node name="FadeTransition" parent="CanvasLayer" instance=ExtResource("10_w7kh3")]
+unique_name_in_owner = true
 
 [node name="ReadySetGo" parent="." instance=ExtResource("9_7r4gi")]
 
