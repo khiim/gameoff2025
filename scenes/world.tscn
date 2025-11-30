@@ -92,6 +92,22 @@ waypoint_number = 12
 position = Vector2(2272, 504)
 waypoint_number = 13
 
+[node name="Direction" parent="Waypoints" instance=ExtResource("5_7r4gi")]
+position = Vector2(3497, 2950)
+rotation = 3.1221833
+
+[node name="Direction2" parent="Waypoints" instance=ExtResource("5_7r4gi")]
+position = Vector2(3453, 3502)
+rotation = 3.1412797
+
+[node name="Direction3" parent="Waypoints" instance=ExtResource("5_7r4gi")]
+position = Vector2(3952, 3230)
+rotation = -1.5464368
+
+[node name="Direction4" parent="Waypoints" instance=ExtResource("5_7r4gi")]
+position = Vector2(3071, 3217)
+rotation = -1.5822687
+
 [node name="Boats" type="Node2D" parent="."]
 unique_name_in_owner = true
 
@@ -143,6 +159,42 @@ Place:
 2. Blackbeard
 3. Davy Jones
 4. Captain Hook"
+
+[node name="Log" parent="." instance=ExtResource("8_4mrxx")]
+position = Vector2(2728, 520)
+rotation = 0.41834962
+
+[node name="Log2" parent="." instance=ExtResource("8_4mrxx")]
+position = Vector2(2407.0002, 3300.0002)
+rotation = 2.8702435
+
+[node name="Log3" parent="." instance=ExtResource("8_4mrxx")]
+position = Vector2(3392, 592)
+rotation = -1.1143266
+
+[node name="Log4" parent="." instance=ExtResource("8_4mrxx")]
+position = Vector2(984, 3120)
+rotation = -1.8144404
+
+[node name="Log5" parent="." instance=ExtResource("8_4mrxx")]
+position = Vector2(2992.0002, 3264)
+rotation = 0.54631346
+
+[node name="Log6" parent="." instance=ExtResource("8_4mrxx")]
+position = Vector2(1472, 415.99997)
+rotation = -0.27848402
+
+[node name="Log7" parent="." instance=ExtResource("8_4mrxx")]
+position = Vector2(3860, 1780.0001)
+rotation = 2.0476832
+
+[node name="Log8" parent="." instance=ExtResource("8_4mrxx")]
+position = Vector2(375.99994, 1520)
+rotation = -2.0547748
+
+[node name="Log9" parent="." instance=ExtResource("8_4mrxx")]
+position = Vector2(466, 1166)
+rotation = -1.1014966
 
 [node name="ReadySetGo" parent="." instance=ExtResource("9_7r4gi")]
 
