@@ -74,9 +74,9 @@ func _on_waypoint_boat_reached_waypoint(boat: Boat, number: int) -> void:
 
 
 func _format_time(_seconds: float) -> String:
-	var _minutes = int(_seconds) / 60.0
+	var mins = int(_seconds) / 60.0
 	var secs = int(_seconds) % 60
-	return str(_minutes) + "m" + str(secs).lpad(2, "0") + "s"
+	return str(mins) + "m" + str(secs).lpad(2, "0") + "s"
 
 
 func _update_laps() -> void:
