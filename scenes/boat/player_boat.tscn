@@ -4,6 +4,15 @@
 [ext_resource type="Script" uid="uid://c3q2d760gcugr" path="res://scenes/boat/player_steering.gd" id="2_3jr3k"]
 
 [node name="PlayerBoat" instance=ExtResource("1_w1kd1")]
+engine_force = null
+engine_max_speed = null
+absolute_max_speed = null
+base_lateral_drag = null
+min_lateral_drag = null
+turn_torque = null
+engine_offset = null
+linear_damping_factor = null
+angular_damping_factor = null
 modulate_color = Color(1, 0.70980394, 0.19215687, 1)
 
 [node name="PlayerSteering" type="Node" parent="." index="4" node_paths=PackedStringArray("boat")]
