@@ -2,14 +2,17 @@ extends Node2D
 
 var button_type = null
 
+
 func _on_start_pressed() -> void:
 	button_type = "start"
 	_fade_trans_in()
+
 
 func _on_options_pressed() -> void:
 	button_type = "options"
 	_fade_trans_in()
 	get_tree().change_scene_to_file("res://scenes/maps/racetrack.tscn")
+
 
 func _on_credits_pressed() -> void:
 	button_type = "credits"

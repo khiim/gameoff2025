@@ -7,6 +7,7 @@ signal go
 @onready var set_sprite: Sprite2D = $Set
 @onready var go_sprite: Sprite2D = $Go
 
+
 func animate_sprite(sprite: Sprite2D) -> Tween:
 	sprite.visible = true
 	var tween := get_tree().create_tween()
