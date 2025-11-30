@@ -18,6 +18,7 @@ var _steer_input: float = 0.0
 var _throttle: float = 0.0
 
 @onready var sprite: Sprite2D = $Sprite
+@onready var sprite_window: Sprite2D = $SpriteWindow
 @onready var gpu_particles_2d: GPUParticles2D = $GPUParticles2D
 @onready var gpu_particles_2d_2: GPUParticles2D = $GPUParticles2D2
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
@@ -68,12 +69,16 @@ func _physics_process(_delta: float) -> void:
 	# Update graphics
 	if is_zero_approx(_steer_input):
 		sprite.frame = 0
+		sprite_window.frame = 0
 	elif _steer_input < 0:
 		sprite.frame = 1
+		sprite_window.frame = 1
 	elif _steer_input > 0:
 		sprite.frame = 2
+		sprite_window.frame = 2
 	else:
 		sprite.frame = 0
+		sprite_window.frame = 0
 
 	if is_zero_approx(_throttle):
 		_set_particles(false, false)
