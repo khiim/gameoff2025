@@ -9,5 +9,8 @@
 # macOS
 .DS_Store
 
+#idea
+.idea/
+
 # Build output
 build/

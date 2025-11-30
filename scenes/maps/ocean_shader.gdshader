@@ -10,7 +10,7 @@ void fragment() {
 	// Called for every pixel the material is visible on.
 	vec2 offset = vec2(sin(UV.x * wobble_speed + TIME * 0.5), cos(UV.y * wobble_speed + TIME * 0.5)) * 0.01;
 	
-	COLOR = texture(TEXTURE, UV + offset * 0.2);
+	COLOR = texture(TEXTURE, UV + offset * 0.2) * vec4(1.0, 1.0, 1.0, 0.3);
 }
 
 //void light() {
