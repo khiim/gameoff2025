@@ -1,7 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://di1ho05qhyphj"]
+[gd_scene load_steps=9 format=3 uid="uid://di1ho05qhyphj"]
 
 [ext_resource type="Script" uid="uid://2t4w0l3wwuxy" path="res://scenes/world.gd" id="1_i7141"]
-[ext_resource type="PackedScene" uid="uid://ow3f32q2gor7" path="res://assets/tilesets/gameof_25_boat_map_1.tscn" id="2_1pp0p"]
 [ext_resource type="PackedScene" uid="uid://bam3cnp74xt0n" path="res://scenes/maps/racetrack.tscn" id="2_7r4gi"]
 [ext_resource type="Script" uid="uid://dm84xs54y5fym" path="res://scenes/camera_2d.gd" id="3_njdnp"]
 [ext_resource type="PackedScene" uid="uid://pxtmt1hm5kur" path="res://scenes/waypoint/waypoint.tscn" id="4_i7141"]
@@ -10,30 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://6m0o5kdt4jmy" path="res://scenes/obstacles/log.tscn" id="8_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://bslenn0a0ou5u" path="res://scenes/ui/ready_set_go.tscn" id="9_7r4gi"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mrxx"]
-size = Vector2(900, 30)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_71j4m"]
-size = Vector2(600, 30)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfnet"]
-size = Vector2(800, 30)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7141"]
-size = Vector2(700, 30)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7r4gi"]
-size = Vector2(700, 39)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7kh3"]
-size = Vector2(30, 800)
-
 [node name="World" type="Node2D"]
 script = ExtResource("1_i7141")
 
 [node name="Racetrack" parent="." instance=ExtResource("2_7r4gi")]
-
-[node name="gameof_25_boat_map_1" parent="." instance=ExtResource("2_1pp0p")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(848, 904)
@@ -52,68 +31,85 @@ zoom_max = 0.8
 unique_name_in_owner = true
 
 [node name="Waypoint0" parent="Waypoints" instance=ExtResource("4_i7141")]
-position = Vector2(2616, 568)
+position = Vector2(4816, 616)
 waypoint_number = 0
 
-[node name="CollisionShape2D" parent="Waypoints/Waypoint0" index="0"]
-rotation = -1.1858517
-shape = SubResource("RectangleShape2D_4mrxx")
-
 [node name="Waypoint1" parent="Waypoints" instance=ExtResource("4_i7141")]
-position = Vector2(2656, 1640)
-
-[node name="CollisionShape2D" parent="Waypoints/Waypoint1" index="0"]
+position = Vector2(6416, 1240)
 rotation = 0.73129296
-shape = SubResource("RectangleShape2D_71j4m")
 
 [node name="Waypoint2" parent="Waypoints" instance=ExtResource("4_i7141")]
-position = Vector2(1717.0059, 2397.2188)
+position = Vector2(6920, 2304)
+rotation = 1.5707964
 waypoint_number = 2
 
-[node name="CollisionShape2D" parent="Waypoints/Waypoint2" index="0"]
-rotation = 1.097812
-shape = SubResource("RectangleShape2D_qfnet")
-
 [node name="Waypoint3" parent="Waypoints" instance=ExtResource("4_i7141")]
-position = Vector2(736, 2104)
+position = Vector2(6943.9995, 3663.9995)
+rotation = 1.4486233
 waypoint_number = 3
 
-[node name="CollisionShape2D" parent="Waypoints/Waypoint3" index="0"]
-rotation = -0.6091199
-shape = SubResource("RectangleShape2D_i7141")
-
 [node name="Waypoint4" parent="Waypoints" instance=ExtResource("4_i7141")]
-position = Vector2(696, 1064)
+position = Vector2(9704, 4824)
 waypoint_number = 4
 
-[node name="CollisionShape2D" parent="Waypoints/Waypoint4" index="0"]
-rotation = 0.36651915
-shape = SubResource("RectangleShape2D_7r4gi")
-
 [node name="Waypoint5" parent="Waypoints" instance=ExtResource("4_i7141")]
-position = Vector2(1368, 424)
+position = Vector2(12000, 2944)
+rotation = 1.5707964
 waypoint_number = 5
 
-[node name="CollisionShape2D" parent="Waypoints/Waypoint5" index="0"]
-shape = SubResource("RectangleShape2D_w7kh3")
+[node name="Waypoint6" parent="Waypoints" instance=ExtResource("4_i7141")]
+position = Vector2(11383.999, 1703.9998)
+rotation = 0.4886922
+waypoint_number = 6
+
+[node name="Waypoint7" parent="Waypoints" instance=ExtResource("4_i7141")]
+position = Vector2(9720, 2312)
+rotation = -0.85346603
+waypoint_number = 7
+
+[node name="Waypoint8" parent="Waypoints" instance=ExtResource("4_i7141")]
+position = Vector2(7408, 2632)
+waypoint_number = 8
+
+[node name="Waypoint9" parent="Waypoints" instance=ExtResource("4_i7141")]
+position = Vector2(6288, 2592)
+waypoint_number = 9
+
+[node name="Waypoint10" parent="Waypoints" instance=ExtResource("4_i7141")]
+position = Vector2(1808, 3344)
+waypoint_number = 10
+
+[node name="Waypoint11" parent="Waypoints" instance=ExtResource("4_i7141")]
+position = Vector2(575.99994, 2904)
+rotation = 1.097812
+waypoint_number = 11
+
+[node name="Waypoint12" parent="Waypoints" instance=ExtResource("4_i7141")]
+position = Vector2(647.99994, 1048)
+rotation = -1.097812
+waypoint_number = 12
+
+[node name="Waypoint13" parent="Waypoints" instance=ExtResource("4_i7141")]
+position = Vector2(2272, 504)
+waypoint_number = 13
 
 [node name="Boats" type="Node2D" parent="."]
 unique_name_in_owner = true
 
 [node name="Player" parent="Boats" instance=ExtResource("6_4mrxx")]
 unique_name_in_owner = true
-position = Vector2(1008, 312)
+position = Vector2(1824, 416)
 
 [node name="Blackbeard" parent="Boats" instance=ExtResource("7_4mrxx")]
-position = Vector2(1048, 464)
+position = Vector2(2016, 416)
 modulate_color = Color(0.16470589, 1, 1, 1)
 
 [node name="Captain Hook" parent="Boats" instance=ExtResource("7_4mrxx")]
-position = Vector2(840, 544)
+position = Vector2(1824, 544)
 modulate_color = Color(1, 0.2784314, 1, 1)
 
 [node name="Davy Jones" parent="Boats" instance=ExtResource("7_4mrxx")]
-position = Vector2(992, 680)
+position = Vector2(2016, 544)
 modulate_color = Color(0.34509805, 0.8509804, 0.14509805, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -146,35 +142,35 @@ Place:
 4. Captain Hook"
 
 [node name="Log" parent="." instance=ExtResource("8_4mrxx")]
-position = Vector2(2067, 692)
+position = Vector2(2728, 520)
 rotation = 0.41834962
 
 [node name="Log2" parent="." instance=ExtResource("8_4mrxx")]
-position = Vector2(2412, 1746)
+position = Vector2(5504, 2592)
 rotation = 2.8702435
 
 [node name="Log3" parent="." instance=ExtResource("8_4mrxx")]
-position = Vector2(2890, 732)
+position = Vector2(3392, 592)
 rotation = -1.1143266
 
 [node name="Log4" parent="." instance=ExtResource("8_4mrxx")]
-position = Vector2(1005, 2347)
+position = Vector2(984, 3120)
 rotation = -1.8144404
 
 [node name="Log5" parent="." instance=ExtResource("8_4mrxx")]
-position = Vector2(1461, 2221)
+position = Vector2(2992.0002, 3264)
 rotation = 0.54631346
 
 [node name="Log6" parent="." instance=ExtResource("8_4mrxx")]
-position = Vector2(1598, 311)
+position = Vector2(1472, 415.99997)
 rotation = -0.27848402
 
 [node name="Log7" parent="." instance=ExtResource("8_4mrxx")]
-position = Vector2(500, 1914)
+position = Vector2(5376, 824)
 rotation = 2.0476832
 
 [node name="Log8" parent="." instance=ExtResource("8_4mrxx")]
-position = Vector2(846, 1511)
+position = Vector2(375.99994, 1520)
 rotation = -2.0547748
 
 [node name="Log9" parent="." instance=ExtResource("8_4mrxx")]
@@ -189,10 +185,11 @@ rotation = -1.1014966
 [connection signal="boat_reached_waypoint" from="Waypoints/Waypoint3" to="." method="_on_waypoint_boat_reached_waypoint"]
 [connection signal="boat_reached_waypoint" from="Waypoints/Waypoint4" to="." method="_on_waypoint_boat_reached_waypoint"]
 [connection signal="boat_reached_waypoint" from="Waypoints/Waypoint5" to="." method="_on_waypoint_boat_reached_waypoint"]
-
-[editable path="Waypoints/Waypoint0"]
-[editable path="Waypoints/Waypoint1"]
-[editable path="Waypoints/Waypoint2"]
-[editable path="Waypoints/Waypoint3"]
-[editable path="Waypoints/Waypoint4"]
-[editable path="Waypoints/Waypoint5"]
+[connection signal="boat_reached_waypoint" from="Waypoints/Waypoint6" to="." method="_on_waypoint_boat_reached_waypoint"]
+[connection signal="boat_reached_waypoint" from="Waypoints/Waypoint7" to="." method="_on_waypoint_boat_reached_waypoint"]
+[connection signal="boat_reached_waypoint" from="Waypoints/Waypoint8" to="." method="_on_waypoint_boat_reached_waypoint"]
+[connection signal="boat_reached_waypoint" from="Waypoints/Waypoint9" to="." method="_on_waypoint_boat_reached_waypoint"]
+[connection signal="boat_reached_waypoint" from="Waypoints/Waypoint10" to="." method="_on_waypoint_boat_reached_waypoint"]
+[connection signal="boat_reached_waypoint" from="Waypoints/Waypoint11" to="." method="_on_waypoint_boat_reached_waypoint"]
+[connection signal="boat_reached_waypoint" from="Waypoints/Waypoint12" to="." method="_on_waypoint_boat_reached_waypoint"]
+[connection signal="boat_reached_waypoint" from="Waypoints/Waypoint13" to="." method="_on_waypoint_boat_reached_waypoint"]
