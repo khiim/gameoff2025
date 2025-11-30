@@ -31,11 +31,13 @@ initial_velocity_max = 64.7
 gravity = Vector3(0, 0, 0)
 
 [node name="Boat" type="RigidBody2D"]
-collision_mask = 3
+collision_mask = 11
 physics_material_override = SubResource("PhysicsMaterial_jw4ub")
 linear_damp_mode = 1
 angular_damp_mode = 1
 script = ExtResource("1_myh2m")
+engine_force = 700.0
+engine_max_speed = 1800.0
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(-19, 0)
@@ -72,6 +74,8 @@ polygon = PackedVector2Array(17, 2, 3, 7, -3, 7, -19, 4, -19, -3, -3, -6, 4, -6,
 [node name="WaveSpawner" parent="." instance=ExtResource("3_dr53j")]
 
 [node name="BoatDetecter" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 9
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BoatDetecter"]
 polygon = PackedVector2Array(24, 1, 196, -21, 196, 19)
@@ -81,3 +85,4 @@ stream = ExtResource("4_o12wg")
 volume_db = -20.0
 max_distance = 1000.0
 attenuation = 2.0705287
+bus = &"SFX"

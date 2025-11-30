@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx7l0nu0ghd4f"]
+
+[ext_resource type="Texture2D" uid="uid://sdfducqj8igs" path="res://assets/tilesets/extras.png" id="1_ndcyd"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gse1g"]
+bounce = 1.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1x6jd"]
+radius = 5.0
+height = 20.0
+
+[node name="Duck" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 11
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_gse1g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_ndcyd")
+hframes = 14
+vframes = 8
+frame = 58
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_1x6jd")
