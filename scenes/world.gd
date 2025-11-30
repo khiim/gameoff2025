@@ -50,17 +50,17 @@ func _on_go() -> void:
 	boats.process_mode = Node.PROCESS_MODE_INHERIT
 
 
-func _add_lap(name: String, t: float) -> void:
-	if not _boat_lap_times.has(name):
-		_boat_lap_times[name] = []
-	_boat_lap_times[name].append(t)
+func _add_lap(boat: Boat, t: float) -> void:
+	if not _boat_lap_times.has(boat.name):
+		_boat_lap_times[boat.name] = []
+	_boat_lap_times[boat.name].append(t)
 
 
 func _on_waypoint_boat_reached_waypoint(boat: Boat, number: int) -> void:
 	if _boat_next_waypoint[boat.name] == number:
 		print(boat.name, " reached ", number)
 		if number == _number_of_waypoints - 1:
-			_add_lap(boat.name, Time.get_unix_time_from_system())
+			_add_lap(boat, Time.get_unix_time_from_system())
 			if _boat_lap[boat.name] == laps - 1:
 				_boat_finished(boat)
 			else:
@@ -73,10 +73,10 @@ func _on_waypoint_boat_reached_waypoint(boat: Boat, number: int) -> void:
 			_boat_next_waypoint[boat.name] += 1
 
 
-func _format_time(seconds: float) -> String:
-	var minutes = int(seconds) / 60
-	var secs = int(seconds) % 60
-	return str(minutes) + "m" + str(secs).lpad(2, "0") + "s"
+func _format_time(_seconds: float) -> String:
+	var mins = int(_seconds) / 60.0
+	var secs = int(_seconds) % 60
+	return str(mins) + "m" + str(secs).lpad(2, "0") + "s"
 
 
 func _update_laps() -> void:
