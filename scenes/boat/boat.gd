@@ -16,7 +16,6 @@ extends RigidBody2D
 
 var _steer_input: float = 0.0
 var _throttle: float = 0.0
-var _times: Array[float] = []
 
 @onready var sprite: Sprite2D = $Sprite
 @onready var sprite_window: Sprite2D = $SpriteWindow

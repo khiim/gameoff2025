@@ -39,7 +39,7 @@ func _ready() -> void:
 				boat.get_node("AiSteering").targets = _waypoint_markers
 		_boat_next_waypoint[boat.name] = 0
 		_boat_lap[boat.name] = 0
-		_add_lap(boat.name, Time.get_unix_time_from_system())
+		_add_lap(boat, Time.get_unix_time_from_system())
 
 	_update_laps()
 	boats.process_mode = Node.PROCESS_MODE_DISABLED
