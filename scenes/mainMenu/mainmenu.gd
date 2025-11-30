@@ -17,9 +17,6 @@ func _on_credits_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/maps/racetrack.tscn")
 
 
-func _on_quit_pressed() -> void:
-	get_tree().quit()
-	
 func _fade_trans_in() -> void:
 	$FadeTransition.show()
 	$FadeTransition/FadeTimer.start()
@@ -29,8 +26,8 @@ func _fade_trans_in() -> void:
 func _on_fade_timer_timeout() -> void:
 	match button_type:
 		"start":
-			get_tree().change_scene_to_file("res://scenes/maps/racetrack.tscn")
+			get_tree().change_scene_to_file("res://scenes/world.tscn")
 		"options":
-			get_tree().change_scene_to_file("res://scenes/maps/racetrack.tscn")
+			get_tree().change_scene_to_file("res://scenes/world.tscn")
 		"credits":
-			get_tree().change_scene_to_file("res://scenes/maps/racetrack.tscn")
+			get_tree().change_scene_to_file("res://scenes/world.tscn")

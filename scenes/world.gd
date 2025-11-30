@@ -40,13 +40,17 @@ func _ready() -> void:
 		_boat_next_waypoint[boat.name] = 0
 		_boat_lap[boat.name] = 0
 		_add_lap(boat, Time.get_unix_time_from_system())
-
+	
 	_update_laps()
 	boats.process_mode = Node.PROCESS_MODE_DISABLED
-	_start_time = Time.get_unix_time_from_system()
+	%FadeTransition/AnimationPlayer.animation_finished.connect(_on_animation_finished)
+	%FadeTransition/AnimationPlayer.play("fade_out")
 
+func _on_animation_finished(_anim_name) -> void:
+	ready_set_go.start_ready()
 
 func _on_go() -> void:
+	_start_time = Time.get_unix_time_from_system()
 	boats.process_mode = Node.PROCESS_MODE_INHERIT
 
 
