@@ -6,12 +6,14 @@ signal player_finished(place: int)
 
 var _boat_next_waypoint: Dictionary[String, int] = {}
 var _boat_lap: Dictionary[String, int] = {}
+var _boat_lap_times: Dictionary[String, Array] = {}
 var _number_of_waypoints: int = 0
 var _waypoint_markers: Array[Node2D] = []
 var _finished: Array[String] = []
 var _player_finished: bool = false
 var _player_place: int = 0
 var _all_boats: Array[Boat] = []
+var _start_time: float = 0
 
 @onready var boats: Node2D = %Boats
 @onready var waypoints: Node2D = %Waypoints
@@ -37,19 +39,26 @@ func _ready() -> void:
 				boat.get_node("AiSteering").targets = _waypoint_markers
 		_boat_next_waypoint[boat.name] = 0
 		_boat_lap[boat.name] = 0
+		_add_lap(boat.name, Time.get_unix_time_from_system())
 
 	_update_laps()
 	boats.process_mode = Node.PROCESS_MODE_DISABLED
+	_start_time = Time.get_unix_time_from_system()
 
 
 func _on_go() -> void:
 	boats.process_mode = Node.PROCESS_MODE_INHERIT
 
+func _add_lap(name: String, t: float) -> void:
+	if not _boat_lap_times.has(name):
+		_boat_lap_times[name] = []
+	_boat_lap_times[name].append(t)
 
 func _on_waypoint_boat_reached_waypoint(boat: Boat, number: int) -> void:
 	if _boat_next_waypoint[boat.name] == number:
 		print(boat.name, " reached ", number)
 		if number == _number_of_waypoints - 1:
+			_add_lap(boat.name, Time.get_unix_time_from_system())
 			if _boat_lap[boat.name] == laps - 1:
 				_boat_finished(boat)
 			else:
@@ -61,6 +70,10 @@ func _on_waypoint_boat_reached_waypoint(boat: Boat, number: int) -> void:
 		else:
 			_boat_next_waypoint[boat.name] += 1
 
+func _format_time(seconds: float) -> String:
+	var minutes = int(seconds) / 60
+	var secs = int(seconds) % 60
+	return str(minutes)+ "m" + str(secs).lpad(2, '0') + "s"
 
 func _update_laps() -> void:
 	var player_lap: int = _boat_lap[player.name]
@@ -79,7 +92,9 @@ func _update_laps() -> void:
 	if not _finished.is_empty():
 		status_label.append_text("Place:\n")
 		for i in range(0, _finished.size()):
-			status_label.append_text(str(i + 1) + ". " + _finished[i] + "\n")
+			var time_now = _boat_lap_times[_finished[i]][_boat_lap_times[_finished[i]].size() - 1]
+			var time_elapsed = _format_time(time_now - _start_time)
+			status_label.append_text(str(i + 1) + ". " + _finished[i] + " : " + time_elapsed+"\n")
 
 
 func _boat_finished(boat: Boat) -> void:

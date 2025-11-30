@@ -16,6 +16,7 @@ extends RigidBody2D
 
 var _steer_input: float = 0.0
 var _throttle: float = 0.0
+var _times: Array[float] = []
 
 @onready var sprite: Sprite2D = $Sprite
 @onready var sprite_window: Sprite2D = $SpriteWindow
@@ -37,7 +38,6 @@ func set_input(steer_input: float, throttle: float) -> void:
 func _ready() -> void:
 	sprite.modulate = modulate_color
 	audio_stream_player_2d.play()
-
 
 func _physics_process(_delta: float) -> void:
 	# Get forward and right
