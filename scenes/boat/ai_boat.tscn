@@ -6,7 +6,6 @@
 [node name="AiBoat" instance=ExtResource("1_xtqng")]
 
 [node name="AiSteering" type="NavigationAgent2D" parent="." index="4" node_paths=PackedStringArray("boat")]
-debug_enabled = true
 script = ExtResource("2_2ys6a")
 boat = NodePath("..")
 metadata/_custom_type_script = "uid://dj2ne3svfhmgv"
