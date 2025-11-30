@@ -20,6 +20,7 @@ var _throttle: float = 0.0
 @onready var sprite: Sprite2D = $Sprite
 @onready var gpu_particles_2d: GPUParticles2D = $GPUParticles2D
 @onready var gpu_particles_2d_2: GPUParticles2D = $GPUParticles2D2
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
 func spawn_wave() -> void:
@@ -34,6 +35,7 @@ func set_input(steer_input: float, throttle: float) -> void:
 
 func _ready() -> void:
 	sprite.modulate = modulate_color
+	audio_stream_player_2d.play()
 
 
 func _physics_process(_delta: float) -> void:
@@ -79,6 +81,12 @@ func _physics_process(_delta: float) -> void:
 		_set_particles(true, false)
 	elif _throttle < 0:
 		_set_particles(true, true)
+
+	# Update sounds
+	if is_zero_approx(_throttle):
+		audio_stream_player_2d.pitch_scale = 0.5
+	else:
+		audio_stream_player_2d.pitch_scale = 1.0
 
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
