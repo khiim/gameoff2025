@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=3 uid="uid://djypf11d7gr16"]
+
+[ext_resource type="Script" uid="uid://bmejmaucmhhuj" path="res://scenes/mainMenu/mainmenu.gd" id="1_dp5o4"]
+[ext_resource type="PackedScene" uid="uid://dbov1xdo5btqg" path="res://scenes/mainMenu/fade_transition.tscn" id="2_h0d1w"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_dp5o4")
+
+[node name="ButtonManager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Start" type="TextureButton" parent="ButtonManager"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 12.8
+anchor_top = 7.4000006
+anchor_right = 16.0
+anchor_bottom = 8.200001
+offset_top = -3.0517578e-05
+offset_bottom = -3.0517578e-05
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Options" type="TextureButton" parent="ButtonManager"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 12.8
+anchor_top = 8.400001
+anchor_right = 16.0
+anchor_bottom = 9.200001
+offset_top = -3.0517578e-05
+offset_bottom = -3.0517578e-05
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Credits" type="TextureButton" parent="ButtonManager"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 12.8
+anchor_top = 9.400001
+anchor_right = 16.0
+anchor_bottom = 10.200001
+offset_top = -3.0517578e-05
+offset_bottom = -3.0517578e-05
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Quit" type="TextureButton" parent="ButtonManager"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 12.8
+anchor_top = 10.400001
+anchor_right = 16.0
+anchor_bottom = 11.200001
+offset_top = -3.0517578e-05
+offset_bottom = -3.0517578e-05
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="FadeTransition" parent="." instance=ExtResource("2_h0d1w")]
+visible = false
+offset_top = -8.0
+offset_bottom = 656.0
+
+[node name="FadeTimer" type="Timer" parent="FadeTransition"]
+
+[connection signal="pressed" from="ButtonManager/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="ButtonManager/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="ButtonManager/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="ButtonManager/Quit" to="." method="_on_quit_pressed"]
+[connection signal="timeout" from="FadeTransition/FadeTimer" to="." method="_on_fade_timer_timeout"]
