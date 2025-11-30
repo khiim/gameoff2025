@@ -31,52 +31,51 @@ zoom_max = 0.8
 unique_name_in_owner = true
 
 [node name="Waypoint0" parent="Waypoints" instance=ExtResource("4_i7141")]
-position = Vector2(4816, 616)
+position = Vector2(3216, 520)
 waypoint_number = 0
 
 [node name="Waypoint1" parent="Waypoints" instance=ExtResource("4_i7141")]
-position = Vector2(6416, 1240)
+position = Vector2(3832, 1000)
 rotation = 0.73129296
 
 [node name="Waypoint2" parent="Waypoints" instance=ExtResource("4_i7141")]
-position = Vector2(6920, 2304)
+position = Vector2(3528, 2856)
 rotation = 1.5707964
 waypoint_number = 2
 
 [node name="Waypoint3" parent="Waypoints" instance=ExtResource("4_i7141")]
-position = Vector2(6943.9995, 3663.9995)
+position = Vector2(3479.999, 3704.0002)
 rotation = 1.4486233
 waypoint_number = 3
 
 [node name="Waypoint4" parent="Waypoints" instance=ExtResource("4_i7141")]
-position = Vector2(9704, 4824)
+position = Vector2(4000, 4144)
 waypoint_number = 4
 
 [node name="Waypoint5" parent="Waypoints" instance=ExtResource("4_i7141")]
-position = Vector2(12000, 2944)
+position = Vector2(4504, 3648)
 rotation = 1.5707964
 waypoint_number = 5
 
 [node name="Waypoint6" parent="Waypoints" instance=ExtResource("4_i7141")]
-position = Vector2(11383.999, 1703.9998)
+position = Vector2(4255.999, 3279.9998)
 rotation = 0.4886922
 waypoint_number = 6
 
 [node name="Waypoint7" parent="Waypoints" instance=ExtResource("4_i7141")]
-position = Vector2(9720, 2312)
-rotation = -0.85346603
+position = Vector2(3792, 3232)
 waypoint_number = 7
 
 [node name="Waypoint8" parent="Waypoints" instance=ExtResource("4_i7141")]
-position = Vector2(7408, 2632)
+position = Vector2(2912, 3232)
 waypoint_number = 8
 
 [node name="Waypoint9" parent="Waypoints" instance=ExtResource("4_i7141")]
-position = Vector2(6288, 2592)
+position = Vector2(1728, 3304)
 waypoint_number = 9
 
 [node name="Waypoint10" parent="Waypoints" instance=ExtResource("4_i7141")]
-position = Vector2(1808, 3344)
+position = Vector2(1192, 3288)
 waypoint_number = 10
 
 [node name="Waypoint11" parent="Waypoints" instance=ExtResource("4_i7141")]
