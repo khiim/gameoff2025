@@ -85,3 +85,4 @@ stream = ExtResource("4_o12wg")
 volume_db = -20.0
 max_distance = 1000.0
 attenuation = 2.0705287
+bus = &"SFX"
