@@ -1,16 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://6m0o5kdt4jmy"]
+[gd_scene load_steps=4 format=3 uid="uid://6m0o5kdt4jmy"]
 
-[ext_resource type="Texture2D" uid="uid://qadvyb2222je" path="res://assets/div/log-go25.png" id="1_2ird0"]
+[ext_resource type="Texture2D" uid="uid://sdfducqj8igs" path="res://assets/tilesets/extras.png" id="1_2ird0"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2ird0"]
+rough = true
+bounce = 0.15
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ird0"]
-size = Vector2(55, 116)
+size = Vector2(32.668922, 79.11979)
 
 [node name="Log" type="RigidBody2D"]
-collision_mask = 3
+collision_layer = 8
+collision_mask = 11
+mass = 2.0
+physics_material_override = SubResource("PhysicsMaterial_2ird0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_2ird0")
+hframes = 14
+vframes = 8
+frame = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0)
+position = Vector2(0.14405632, 9.24426)
+rotation = 1.4137167
 shape = SubResource("RectangleShape2D_2ird0")
