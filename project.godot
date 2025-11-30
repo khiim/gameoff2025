@@ -61,6 +61,7 @@ wave={
 2d_physics/layer_1="boat"
 2d_physics/layer_2="terrain"
 2d_physics/layer_3="waypoint"
+2d_physics/layer_4="debris"
 
 [physics]
 
