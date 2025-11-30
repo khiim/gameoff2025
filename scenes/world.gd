@@ -57,6 +57,8 @@ func _on_go() -> void:
 
 
 func _add_lap(boat: Boat, t: float) -> void:
+	if _is_boat_finished(boat):
+		return
 	if not _boat_lap_times.has(boat.name):
 		_boat_lap_times[boat.name] = []
 	_boat_lap_times[boat.name].append(t)
@@ -68,7 +70,7 @@ func _on_waypoint_boat_reached_waypoint(boat: Boat, number: int) -> void:
 		if number == _number_of_waypoints - 1:
 			_add_lap(boat, Time.get_unix_time_from_system())
 			if _boat_lap[boat.name] == laps - 1:
-				_boat_finished(boat)
+				_on_boat_finished(boat)
 			else:
 				_boat_lap[boat.name] += 1
 
@@ -80,7 +82,8 @@ func _on_waypoint_boat_reached_waypoint(boat: Boat, number: int) -> void:
 
 
 func _format_time(_seconds: float) -> String:
-	var mins = int(_seconds) / 60.0
+	@warning_ignore("integer_division")
+	var mins = int(_seconds) / 60
 	var secs = int(_seconds) % 60
 	return str(mins) + "m" + str(secs).lpad(2, "0") + "s"
 
@@ -107,8 +110,8 @@ func _update_laps() -> void:
 			status_label.append_text(str(i + 1) + ". " + _finished[i] + " : " + time_elapsed + "\n")
 
 
-func _boat_finished(boat: Boat) -> void:
-	if _finished.any(func(b: String) -> bool: return b == boat.name):
+func _on_boat_finished(boat: Boat) -> void:
+	if _is_boat_finished(boat):
 		return
 	print("Boat finished ", boat.name)
 	_finished.append(boat.name)
@@ -116,3 +119,7 @@ func _boat_finished(boat: Boat) -> void:
 		_player_finished = true
 		_player_place = _finished.size()
 		player_finished.emit(_player_place)
+
+
+func _is_boat_finished(boat: Boat) -> bool:
+	return _finished.any(func(b: String) -> bool: return b == boat.name)

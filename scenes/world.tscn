@@ -121,7 +121,7 @@ modulate_color = Color(0.34509805, 0.8509804, 0.14509805, 1)
 [node name="Panel" type="Panel" parent="CanvasLayer"]
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 192.0
+offset_right = 288.0
 offset_bottom = 208.0
 
 [node name="StatusRichTextLabel" type="RichTextLabel" parent="CanvasLayer/Panel"]
@@ -147,6 +147,7 @@ Place:
 
 [node name="FadeTransition" parent="CanvasLayer" instance=ExtResource("10_w7kh3")]
 unique_name_in_owner = true
+visible = false
 
 [node name="ReadySetGo" parent="." instance=ExtResource("9_7r4gi")]
 
