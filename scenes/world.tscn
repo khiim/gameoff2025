@@ -162,7 +162,6 @@ Menu: ESC"
 
 [node name="FadeTransition" parent="CanvasLayer" instance=ExtResource("10_w7kh3")]
 unique_name_in_owner = true
-visible = false
 
 [node name="ReadySetGo" parent="." instance=ExtResource("9_7r4gi")]
 
