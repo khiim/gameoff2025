@@ -1,24 +1,37 @@
-# Game Off 2025
+# Need 4 Waves
+
+A speed boat racing game. Get to the finish line first! Use the wave shooter to blast a wave in front of you to clear obstacles and mess with other boats.
 
 This is the source code for our game for the [Game Off 2025](https://itch.io/jam/game-off-2025) game jam.
 
-# Getting started
+The game can be played in the browser [here](https://khiim.itch.io/need-4-waves).
 
-## Tools
+## Contributors
+- Kristian Hiim - Developer
+- Aina Kvamme Bru - Developer/Artist
+- Marius Horne - Developer
+- Ida-Marie K. Johannessen - Lead Artist
+- Vidar Hiim - Tester
 
-### [Godot](https://godotengine.org/)
+Music from https://opengameart.org/content/5-chiptunes-action
+
+## Getting started with development
+
+### Tools
+
+#### [Godot](https://godotengine.org/)
 
 Download the [Godot 4.5.1](https://godotengine.org/) game engine for your system, and hack away.
 
-### [GDScript Toolkit](https://github.com/Scony/godot-gdscript-toolkit)
+#### [GDScript Toolkit](https://github.com/Scony/godot-gdscript-toolkit)
 
 We use [GDScript Toolkit](https://github.com/Scony/godot-gdscript-toolkit) to help with consistent code style, and increase the quality.
 
-### [Pre-commit](https://pre-commit.com/)
+#### [Pre-commit](https://pre-commit.com/)
 
 The pre-commit hook runs the GDSCript Toolkit, and ensures a clean git history.
 
-## Local development
+### Local development
 
 How to install:
 
@@ -32,7 +45,7 @@ Now every time you run git commit the GdScript Toolkit linter is executed, and y
 
 You can also run `gdlint .` and `gdformat .` from the command line if you want to run the tools before committing.
 
-### For the more terminal savvy devs
+#### For the more terminal savvy devs
 
 If you primarily use git through the terminal you should set up a venv for the python environment.
 
