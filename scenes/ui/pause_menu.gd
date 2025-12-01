@@ -24,11 +24,8 @@ func _on_resume_pressed():
 
 
 func _on_restart_pressed():
+	get_tree().paused = false
 	get_tree().reload_current_scene()
-
-
-func _on_quit_pressed():
-	get_tree().quit()
 
 
 func _process(_delta):
@@ -37,3 +34,9 @@ func _process(_delta):
 
 func _ready():
 	visible = false
+
+
+func _on_main_menu_pressed():
+	# Needs to load main menu
+	# get_tree().change_scene_to_file("res://scenes/world.tscn")
+	pass  # Replace with function body.
