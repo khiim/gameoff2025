@@ -86,11 +86,13 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 
 
-func _on_body_entered(body: RigidBody2D) -> void:
+func _on_body_entered(body: Node2D) -> void:
+	if body is not RigidBody2D:
+		return
 	if body not in _hit_boats:
 		_hit_boats.append(body)
 
 
-func _on_body_exited(body: RigidBody2D) -> void:
+func _on_body_exited(body: Node2D) -> void:
 	if body in _hit_boats:
 		_hit_boats.erase(body)

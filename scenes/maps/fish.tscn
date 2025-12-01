@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0i6df72u0ndx"]
+
+[ext_resource type="Texture2D" uid="uid://sdfducqj8igs" path="res://assets/tilesets/extras.png" id="1_qmdgf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07kgu"]
+atlas = ExtResource("1_qmdgf")
+region = Rect2(512, 640, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcn10"]
+atlas = ExtResource("1_qmdgf")
+region = Rect2(640, 640, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_npkov"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07kgu")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_dcn10")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="Fish" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_npkov")
+autoplay = "default"
+frame_progress = 0.07064812
