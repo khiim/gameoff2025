@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=4 uid="uid://bam3cnp74xt0n"]
+[gd_scene load_steps=16 format=4 uid="uid://bam3cnp74xt0n"]
 
 [ext_resource type="PackedScene" uid="uid://c0i6df72u0ndx" path="res://scenes/maps/fish.tscn" id="1_0mw6i"]
 [ext_resource type="Script" uid="uid://60l0gfnlewt7" path="res://scenes/maps/path_follow_2d.gd" id="1_11ik0"]
 [ext_resource type="Shader" uid="uid://cyq3uum6thrl2" path="res://scenes/maps/ocean_shader.gdshader" id="1_lt5xr"]
 [ext_resource type="Texture2D" uid="uid://cic5mtrdffix3" path="res://assets/ocean/ocean_top_ripples.png" id="2_nryjt"]
 [ext_resource type="Texture2D" uid="uid://82g7ulr4kvog" path="res://assets/ocean/ocean_mid_ripple.png" id="3_lt5xr"]
+[ext_resource type="PackedScene" uid="uid://dishkvmhfyaus" path="res://scenes/waypoint/direction.tscn" id="3_tgcsu"]
 [ext_resource type="TileSet" uid="uid://b0orvl7soqlmh" path="res://assets/tilesets/tileset.tres" id="4_nryjt"]
 [ext_resource type="PackedScene" uid="uid://6m0o5kdt4jmy" path="res://scenes/obstacles/log.tscn" id="5_n1sht"]
 [ext_resource type="PackedScene" uid="uid://dx7l0nu0ghd4f" path="res://scenes/obstacles/duck.tscn" id="6_0eshq"]
@@ -58,6 +59,23 @@ script = ExtResource("1_11ik0")
 
 [node name="Fish" parent="Underwater/Path2D/PathFollow2D" instance=ExtResource("1_0mw6i")]
 rotation = 1.5707964
+
+[node name="Direction" parent="Underwater" instance=ExtResource("3_tgcsu")]
+position = Vector2(3503, 2903)
+rotation = 3.1161916
+
+[node name="Direction2" parent="Underwater" instance=ExtResource("3_tgcsu")]
+position = Vector2(3463, 3500)
+rotation = -3.106435
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Direction3" parent="Underwater" instance=ExtResource("3_tgcsu")]
+position = Vector2(3908, 3237)
+rotation = -1.549145
+
+[node name="Direction4" parent="Underwater" instance=ExtResource("3_tgcsu")]
+position = Vector2(3152, 3194)
+rotation = -1.5385903
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 repeat_size = Vector2(1000, 1000)
