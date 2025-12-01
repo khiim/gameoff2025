@@ -1,3 +1,4 @@
+class_name World
 extends Node2D
 
 signal player_finished(place: int)
@@ -14,12 +15,14 @@ var _player_finished: bool = false
 var _player_place: int = 0
 var _all_boats: Array[Boat] = []
 var _start_time: float = 0
+var _victory_screen: VictoryScreen = null
 
 @onready var boats: Node2D = %Boats
 @onready var waypoints: Node2D = %Waypoints
 @onready var player: Boat = %Player
 @onready var status_label: RichTextLabel = %StatusRichTextLabel
 @onready var ready_set_go: ReadySetGo = $ReadySetGo
+@onready var lap_panel: Panel = %LapPanel
 
 
 func _ready() -> void:
@@ -119,7 +122,16 @@ func _on_boat_finished(boat: Boat) -> void:
 		_player_finished = true
 		_player_place = _finished.size()
 		player_finished.emit(_player_place)
+		_show_victory_screen()
+	elif _victory_screen != null:
+		_victory_screen.update_list()
 
 
 func _is_boat_finished(boat: Boat) -> bool:
 	return _finished.any(func(b: String) -> bool: return b == boat.name)
+
+
+func _show_victory_screen() -> void:
+	_victory_screen = VictoryScreen.create(self)
+	lap_panel.visible = false
+	add_child(_victory_screen)

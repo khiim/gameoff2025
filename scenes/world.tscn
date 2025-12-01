@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://di1ho05qhyphj"]
+[gd_scene load_steps=10 format=3 uid="uid://di1ho05qhyphj"]
 
 [ext_resource type="Script" uid="uid://2t4w0l3wwuxy" path="res://scenes/world.gd" id="1_i7141"]
 [ext_resource type="PackedScene" uid="uid://bam3cnp74xt0n" path="res://scenes/maps/racetrack.tscn" id="2_7r4gi"]
 [ext_resource type="Script" uid="uid://dm84xs54y5fym" path="res://scenes/camera_2d.gd" id="3_njdnp"]
 [ext_resource type="PackedScene" uid="uid://pxtmt1hm5kur" path="res://scenes/waypoint/waypoint.tscn" id="4_i7141"]
-[ext_resource type="PackedScene" uid="uid://dishkvmhfyaus" path="res://scenes/waypoint/direction.tscn" id="5_7r4gi"]
 [ext_resource type="PackedScene" uid="uid://c1q82althq3qi" path="res://scenes/boat/player_boat.tscn" id="6_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://ccijcl7av0lp5" path="res://scenes/boat/ai_boat.tscn" id="7_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://bslenn0a0ou5u" path="res://scenes/ui/ready_set_go.tscn" id="9_7r4gi"]
@@ -99,28 +98,33 @@ unique_name_in_owner = true
 [node name="Player" parent="Boats" instance=ExtResource("6_4mrxx")]
 unique_name_in_owner = true
 position = Vector2(1824, 416)
+continuous_cd = 0
 
 [node name="Blackbeard" parent="Boats" instance=ExtResource("7_4mrxx")]
 position = Vector2(2016, 416)
+continuous_cd = 0
 modulate_color = Color(0.16470589, 1, 1, 1)
 
 [node name="Captain Hook" parent="Boats" instance=ExtResource("7_4mrxx")]
 position = Vector2(1824, 544)
+continuous_cd = 0
 modulate_color = Color(1, 0.2784314, 1, 1)
 
 [node name="Davy Jones" parent="Boats" instance=ExtResource("7_4mrxx")]
 position = Vector2(2016, 544)
+continuous_cd = 0
 modulate_color = Color(0.34509805, 0.8509804, 0.14509805, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
+[node name="LapPanel" type="Panel" parent="CanvasLayer"]
+unique_name_in_owner = true
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 288.0
 offset_bottom = 208.0
 
-[node name="StatusRichTextLabel" type="RichTextLabel" parent="CanvasLayer/Panel"]
+[node name="StatusRichTextLabel" type="RichTextLabel" parent="CanvasLayer/LapPanel"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -145,8 +149,10 @@ Place:
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -112.0
-offset_right = 360.0
+offset_left = 8.0
+offset_top = -128.0
+offset_right = 368.0
+offset_bottom = -16.0
 grow_vertical = 0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Panel2"]
@@ -162,24 +168,9 @@ Menu: ESC"
 
 [node name="FadeTransition" parent="CanvasLayer" instance=ExtResource("10_w7kh3")]
 unique_name_in_owner = true
+visible = false
 
 [node name="ReadySetGo" parent="." instance=ExtResource("9_7r4gi")]
-
-[node name="Direction" parent="." instance=ExtResource("5_7r4gi")]
-position = Vector2(3503, 2903)
-rotation = 3.1161916
-
-[node name="Direction2" parent="." instance=ExtResource("5_7r4gi")]
-position = Vector2(3463, 3500)
-rotation = -3.106435
-
-[node name="Direction3" parent="." instance=ExtResource("5_7r4gi")]
-position = Vector2(3908, 3237)
-rotation = -1.549145
-
-[node name="Direction4" parent="." instance=ExtResource("5_7r4gi")]
-position = Vector2(3152, 3194)
-rotation = -1.5385903
 
 [node name="PauseCanvasLayer" type="CanvasLayer" parent="."]
 
