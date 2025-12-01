@@ -141,9 +141,27 @@ Place:
 3. Davy Jones
 4. Captain Hook"
 
+[node name="Panel2" type="Panel" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -112.0
+offset_right = 360.0
+grow_vertical = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Panel2"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 432.0
+offset_bottom = 104.0
+text = "Move: WASD / Arrows
+Wave gun: SPACE / Left Mouse Button
+Toggle Sound: N  -  Toggle Music: M
+Menu: ESC"
+
 [node name="FadeTransition" parent="CanvasLayer" instance=ExtResource("10_w7kh3")]
 unique_name_in_owner = true
-visible = false
 
 [node name="ReadySetGo" parent="." instance=ExtResource("9_7r4gi")]
 

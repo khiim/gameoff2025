@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dj8d1lmixqave"]
+
+[ext_resource type="Texture2D" uid="uid://sdfducqj8igs" path="res://assets/tilesets/extras.png" id="1_eauog"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gung0"]
+atlas = ExtResource("1_eauog")
+region = Rect2(0, 384, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h5txw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gung0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="Rock" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 9
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_h5txw")
+autoplay = "default"
+frame_progress = 0.4386307
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-51, 10, -44, 1, 6, -18, 43, -2, 54, 19, 50, 38, 37, 42, -33, 43, -48, 35)

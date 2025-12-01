@@ -2,7 +2,7 @@ class_name PlayerSteering
 extends Node
 
 @export var boat: Boat
-@export var wave_cooldown_time: float = 2.0
+@export var wave_cooldown_time: float = 1.0
 
 var wave_cooldown: float = 0.0
 
