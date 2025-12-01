@@ -99,21 +99,17 @@ unique_name_in_owner = true
 [node name="Player" parent="Boats" instance=ExtResource("6_4mrxx")]
 unique_name_in_owner = true
 position = Vector2(1824, 416)
-collision_mask = 3
 
 [node name="Blackbeard" parent="Boats" instance=ExtResource("7_4mrxx")]
 position = Vector2(2016, 416)
-collision_mask = 3
 modulate_color = Color(0.16470589, 1, 1, 1)
 
 [node name="Captain Hook" parent="Boats" instance=ExtResource("7_4mrxx")]
 position = Vector2(1824, 544)
-collision_mask = 3
 modulate_color = Color(1, 0.2784314, 1, 1)
 
 [node name="Davy Jones" parent="Boats" instance=ExtResource("7_4mrxx")]
 position = Vector2(2016, 544)
-collision_mask = 3
 modulate_color = Color(0.34509805, 0.8509804, 0.14509805, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
