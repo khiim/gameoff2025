@@ -13,9 +13,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -215.5
-offset_top = -88.5
+offset_top = -98.25
 offset_right = 215.5
-offset_bottom = 88.5
+offset_bottom = 98.25
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -41,5 +41,16 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
+text = "1.
+2.
+3.
+4.
+"
 fit_content = true
 horizontal_alignment = 1
+
+[node name="TryAgainButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Try again"
+
+[connection signal="pressed" from="Panel/VBoxContainer/TryAgainButton" to="." method="_on_try_again_button_pressed"]
