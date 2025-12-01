@@ -33,3 +33,8 @@ func update_list() -> void:
 		]
 		var time_elapsed = _world._format_time(time_now - _world._start_time)
 		boats.append_text(str(i + 1) + ". " + finished_boats[i] + " : " + time_elapsed + "\n")
+
+
+func _on_try_again_button_pressed() -> void:
+	get_tree().paused = false
+	get_tree().reload_current_scene()

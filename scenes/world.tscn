@@ -173,6 +173,7 @@ visible = false
 [node name="ReadySetGo" parent="." instance=ExtResource("9_7r4gi")]
 
 [node name="PauseCanvasLayer" type="CanvasLayer" parent="."]
+layer = 10
 
 [node name="PauseMenu" parent="PauseCanvasLayer" instance=ExtResource("9_w7kh3")]
 
